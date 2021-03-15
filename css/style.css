@@ -1,0 +1,56 @@
+:root {
+	font-size: 16px;
+	font-family: 'Open Sans';
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+}
+
+.header a {
+	font-size: 40px;
+	color: black;
+	float: left;
+	text-align: justify;
+	text-decoration: none;
+}
+.header a:hover {
+	color: grey;
+}
+
+.navbar {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.navbar a {
+	font-size: 20px;
+	display: flex;
+	color: black;
+	float: right;
+	padding: 16px 20px;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	color: grey;
+}
+
+.card {
+	display: flex;
+	color: blue;
+	justify-content: center;
+	background-color: blue;
+	width: 50%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+
+.open-jip-footer {
+	color: blue;
+}
+
