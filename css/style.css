@@ -40,17 +40,29 @@
 	color: grey;
 }
 
-.card {
+.card-container {
 	display: flex;
-	color: blue;
-	justify-content: center;
-	background-color: blue;
+}
+
+.card {
+	flex 1;
+	justify-content: space-between;
 	width: 50%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	border-radius: 5px;
+	padding: 1rem;
 }
 
-.open-jip-footer {
+.card:first-child {
+	margin-right: 20px;
+}
+
+.card img {
+	display: flex;
+	height: 60px;
+}
+
+.card-footer {
 	color: blue;
 }
 
