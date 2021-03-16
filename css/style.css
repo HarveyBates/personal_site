@@ -7,11 +7,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 16px 20px;
+	padding: 1rem 1.2rem;
 }
 
 .header a {
-	font-size: 40px;
+	font-size: 2rem;
 	color: black;
 	float: left;
 	text-align: justify;
@@ -28,11 +28,11 @@
 }
 
 .navbar a {
-	font-size: 20px;
+	font-size: 1rem;
 	display: flex;
 	color: black;
 	float: right;
-	padding: 16px 20px;
+	padding: 1rem 1.2rem;
 	text-decoration: none;
 }
 
@@ -42,27 +42,41 @@
 
 .card-container {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .card {
-	flex 1;
-	justify-content: space-between;
-	width: 50%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	border-radius: 5px;
 	padding: 1rem;
+	margin: 1rem;
+	transition: transform 200ms;
+	max-width: 70	0px;
+	min-width: 400px;
 }
 
-.card:first-child {
-	margin-right: 20px;
+.card:hover {
+	transform: scale(1.02);
+}
+
+.card p {
+	font-size: 1rem;
 }
 
 .card img {
 	display: flex;
-	height: 60px;
+	height: 6rem;
 }
 
 .card-footer {
 	color: blue;
 }
+
+.card-footer a {
+	display: flex;
+	justify-content: flex-end;
+}
+
 
