@@ -1,0 +1,43 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates</title>
+	<meta name="description" content="Guide: Reading array from an Arduino using PySerial">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="../blog" class="blog-tab ui-btn-active">Blog</a>
+			<a href="../publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+	
+	<div class="card-container">
+		<div class="card">
+			<h1>Guide: Reading array from an Arduino using PySerial</h1>
+			<h3>Date: Dec 29, 2020</h3>
+			<hr></hr>
+			<p> In this guide a Python script is going to act as the master component (ask for data) and your Arduino microcontroller is going to act as the slave (provide data).</p>
+			<h2>Arduino Side</h2>	
+			<p>First we are going to setup the Arduino to read some random data from an analog pin. This represents sensor data that you could be reading from an operational amplifier or other discrete component.</p>
+			<pre><code class="language-cpp">
+#define readPin 2 // Define which analog pin to read from
+int data[10]; // Create an empty array to store out values
+void setup(){
+	Serial.begin(9600); // Enable serial communications at a specific baud rate
+}
+			</code></pre>
+		</div>	
+	</div>
+</body>
