@@ -1,0 +1,56 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - Search</title>
+	<meta name="description" content="Search">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>Searching</h2>
+			<h3>Description</h3>
+			<p>Commands for searching for/within files and folders in the terminal.</p>
+			
+			<h3>Find</h3>
+			<p>Useful for finding files and folders that match your search term. Must include quotations when searching. Full-stop represents the current working directory.</p>
+			<pre><code class="bash">find . -name "search_term" # Search for files matching "search_term"
+find . -name "*.cpp" # Search for files matching wildcard - extension</code></pre>
+
+			<h3>Search within files</h3>
+			<p>Use grep to search for occurances of words or characters within files and folders.</p>
+			<pre><code class="bash">grep "search_term" "filename" # Search for occurances of search_term in a given file
+grep "search_term" * # Search all files in dir for occurances
+grep -E "word1|word2" * # Search for multiple search terms</code></pre>
+			<h4>Grep Flags</h4>
+			<pre><code class="bash">-w # Only display whole words
+-i # Non-case sensitive
+-r # Search sub-directories as well
+-c # Count number of matches in each file
+-E # Search for multiple search terms
+-x # Only show exact matches</code></pre>
+		</div>
+	</div>	
+</body>
+
+

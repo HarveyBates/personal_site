@@ -1,0 +1,69 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - Miscellaneous</title>
+	<meta name="description" content="Miscellaneous">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>Miscellaneous</h2>
+			<h3>Description</h3>
+			<p>Various bash commands that are useful but don't have a specific order that is worthy of their own page. Also contains useful terminal based programs.</p>
+			
+			<h3>Date and time</h3>
+			<pre><code class="bash">cal # Display calendar
+cal -3 # Display calendar with next and prev month
+date # Display date</code></pre>
+
+			<h3>System</h3>
+			<p>Display certain system information</p>
+			<pre><code class="bash">top # Display current processes
+system_profiler SPDisplayDataType | grep Resolution # Get sys resolution (MacOS)</code></pre>
+
+			<h3>Tree</h3>
+			<p>Displays the current folders tree structure in the terminal.</p>
+			<pre><code class="bash">brew install tree # Install
+tree # Run to display tree structure
+pio run # Compile code
+pio run -t upload # Run then upload
+pio run -e board_name -t upload # Run and upload to specific board</code></pre>
+
+			<h3>Newsboat</h3>
+			<p>RSS terminal reader for RSS feeds.</p>
+			<pre><code class="bash">brew install newboat # Install
+newsboat # Run
+vi ~/.newsboat/urls # Add RSS feed URL's
+vi ~/.newsboat/config # Add specific configuration</code></pre>
+			<p>For config resources see this <a href="https://wiki.archlinux.org/index.php/Newsboat#Configuration">link.</a></p>
+
+			<h3>File transfer (for android devices)</h3>
+			<p>Add and remove files from android device on a mac. Run from GUI application after installation.</p>
+			<pre><code class="bash">brew install --cash android-file-transfer # Install</code></pre>
+
+		</div>
+	</div>	
+</body>
+
+

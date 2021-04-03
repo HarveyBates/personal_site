@@ -1,0 +1,75 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - PlatformIO</title>
+	<meta name="description" content="PlatformIO">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>PlatformIO<h2>
+			<h3>Description</h3>
+			<p>Platform IO allows for easy uploading and viewing of microcontroller input and outputs. This information convers the command line interface for PlatformIO.</p>
+			<p>Website: <a href="https://platformio.org/">PlatformIO</a></p>
+			
+			<h3>Installation</h3>
+			<h4>Curl (requires python): </h4>
+			<pre><code class="bash">curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py -o get-platformio.py
+python3 get-platformio.py</code></pre>
+			<p>Add given path to PATH variables. If confused see this <a href="https://docs.platformio.org/en/latest/core/installation.html">link.</a></p>
+
+			<h4>Homebrew (MacOS & Linux): </h4>
+			<pre><code class="bash">brew install platformio</code></pre>
+	
+			<h3>Setup</h3>
+			<p>Website: <a href="https://docs.platformio.org/en/latest/core/userguide/index.html"</a>User Guide</a></p>
+			<p>Pretty sure platformio-cli requires the main file name to be the same as the folder name</p>
+			<pre><code class="bash">pio project init #Creates files needed for platformio</code></pre>
+
+			<p>Edit the .yml file with project specific configuration.</p>
+			<pre><code class="yml">[env:teensy41]
+platform = teensy
+board = teensy41
+framework = arduino
+
+board_build.mcu = imxrt1062
+
+lib_deps = milesburton/DallasTemperature @^3.9.1
+
+upload_protocol = teensy-cli
+
+platform_packages = 
+	toolchain-gccarmnoneeabi@~1.90301.200702
+	tool-teensy@https://github.com/maxgerhardt/pio-tool-teensy-arm/archive/master.zip</code></pre>
+			
+			<h3>Excecute</h3>
+			<pre><code class="bash">pio --help # Display help
+pio run # Compile code
+pio run -t upload # Run then upload
+pio run -e board_name -t upload # Run and upload to specific board</code></pre>
+		</div>
+	</div>	
+</body>
+
+

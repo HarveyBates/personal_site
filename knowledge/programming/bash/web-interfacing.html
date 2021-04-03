@@ -1,0 +1,67 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - WebInterfacing</title>
+	<meta name="description" content="WebInterfacing">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>Web Interfacing</h2>
+			<h3>Description</h3>
+			<p>Commands for downloading and interacing with websites and web hosted files.</p>
+			
+			<h3>Curl</h3>
+			<p>Website: <a href="https://curl.se/">Curl</a></p>
+			<p>Used in terminal to transfer data.</p>
+			<pre><code class="bash">curl https://www.example.com # Show html in terminal
+curl https://www.example.com -O example.html # Save to html
+curl https://www.example.com/filename.cpp -O "filename.cpp" # Save a file
+# or
+curl -O http://www.example.com/filename.cpp "filename.cpp"</code></pre>
+
+			<h3>WGet</h3>
+			<pre><code class="bash">wget http://www.example.com/filename.cpp # Download file</code></pre>
+
+			<h3>Ping</h3>
+			<p>Test website (get IP address and echo response)</p>
+			<pre><code class="bash">ping sitename.com # Test site and get public IP address
+ping -6 sitename.com # Request IPv6
+ping -4 sitename.com # Request IPv4
+ping -a sitename.com # Generate sound on successful request</code></pre>
+
+			<h3>Lynx (Web Browser)</h3>
+			<p>Lynx is a command line web browser, it works well in most cases.</p>
+			<p>Website: <a href="https://www.commandlinux.com/man-page/man1/lynx.1.html">Lynx</a></p>
+			<h4>Install (Homebrew): </h3>
+			<pre><code class="bash">brew install lynx</code></pre>
+
+			<h4>Execute</h4>
+			<pre><code class="bash">lynx # Run
+lynx sitename.com # Run on specific site</code></pre>
+		</div>
+	</div>	
+</body>
+
+
