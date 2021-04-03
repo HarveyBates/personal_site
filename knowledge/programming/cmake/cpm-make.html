@@ -1,0 +1,77 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - CPM-Make</title>
+	<meta name="description" content="CPM-Make">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>CPM-Make</h2>
+			<h3>Description</h3>
+			<p>Adds dependancies to current machine upon building CMake for the first time. For example, if a specific dependacy is needed for the current project, it will be downloaded before compiling your C++ application. This module also allows for linking of said dependancy if it is downloaded successfully.</p>
+	
+			<h3>Installation</h3>
+			<p>Main Site: <a href="https://github.com/cpm-cmake/CPM.cmake">CPM-Make</a></p>
+			
+			<h4>Method One (Manual Download)</h4>
+			<p>To install navigate to this <a href="https://github.com/cpm-cmake/CPM.cmake/releases">link</a> and download the latest release.</p>
+			<p>Add CPM.cmake to the location where CMakeLists.txt is located.</p>
+			
+			<h4>Method Two (Automatic Download by CMake)</h4>
+			<p>CPM-Make can be downloaded directly by CMake. To do this you need to add the following code snippet to the start of your CMakeLists.txt file.</p>
+			<pre><code class="cmake">set(CPM_DOWNLOAD_VERSION 0.28.4)
+# Set download version to latest release before executing 
+
+if(CPM_SOURCE_CACHE)
+	set(CPM_DOWNLOAD_LOCATION "${CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+elseif(DEFINED ENV{CPM_SOURCE_CACHE})
+	set(CPM_DOWNLOAD_LOCATION "$ENV{CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+else()
+	set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+endif()
+
+if(NOT (EXISTS ${CPM_DOWNLOAD_LOCATION}))
+	message(STATUS "Downloading CPM.cmake to ${CPM_DOWNLOAD_LOCATION}")
+	file(DOWNLOAD
+		https://github.com/TheLartians/CPM.cmake/releases/download/v${CPM_DOWNLOAD_VERSION}/CPM.cmake
+		${CPM_DOWNLOAD_LOCATION}
+	)
+endif()
+
+include(${CPM_DOWNLOAD_LOCATION})</code></pre>
+
+
+			
+			<h3>Setup</h3>
+			<p>Create a file called CMakeLists.txt in your working directory</p>
+			
+
+		</div>
+	</div>	
+</body>
+
+
+
+

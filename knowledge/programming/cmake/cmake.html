@@ -1,0 +1,141 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - CMake</title>
+	<meta name="description" content="CMake">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>CMake</h2>
+			<h3>Description</h3>
+			<p>CMake allows for C++ applications to be compiled without entering library, linkers and files manually each time you want to compile your project.</p>
+	
+			<h3>Installation</h3>
+			<p>Main Site: <a href="https://cmake.org/install/">CMake</a></p>
+
+			<h4>Homebrew: </h4>
+			<pre><code class="bash">brew install --cask cmake</code></pre>
+			
+			<h3>Setup</h3>
+			<p>Create a file called CMakeLists.txt in your working directory</p>
+			<h4>Define Operating System</h4>
+			<pre><code class="cmake">if(UNIX AND NOT APPLE)
+	... # Linux
+elseif(APPLE)
+	... # MacOS
+else()
+	... # Windows
+endif()</code></pre>
+
+			<h4>Define Minimum Version</h4>
+			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html">cmake_minimum_required</a></p>
+			<pre><code class="cmake">cmake_minimum_required(VERSION "3.19.2")
+# Just use current version you are using</code></pre>
+			
+			<h4>Define Project Name</h4>
+			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/project.html">project</a></p>
+			<pre><code class="cmake">project("project_name")</code></pre>
+
+			<h4>Locate Installed Package</h4>
+			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/find_package.html">find_package</a></p>
+			<pre><code class="cmake">find_package(*package_name* REQUIRED)</code></pre>
+
+			<h4>Set Source Directory</h4>
+			<p>This is where all your C++ (.cpp) files will be located</p>
+			<pre><code class="cmake">set(NAME_SRC
+	src/main.cpp
+	src/example.cpp)</code></pre>
+
+			<h4>Set Include Directory</h4>
+			<p>This is where all your C++ header (.h or .hpp) files will be located</p>
+			<pre><code class="cmake">set(NAME_H
+	include/main.h
+	include/example.h)</code></pre>
+
+			<h4>Set Executable Path</h4>
+			<p>This is where an executable (.exe) file will be generated.</p>
+			<pre><code class="cmake">set(EXE_PATH ${CMAKE_BINARY_DIR}/bin)</code></pre>
+			<p>CMAKE_BINARY_DIR represents the directroy where your CMakeLists.txt file is located</p>
+			
+			<h4>Include Directories</h4>
+			<p>Add muliple include directories of packages as <a href="https://cmake.org/cmake/help/latest/command/include_directories.html">include_directories</a></p>
+			<pre><code class"cmake">include_directories(${CMAKE_SOURCE_DIR}/include ...)</code></pre>
+
+			<h4>Add Executable</h4>
+			<p>Add components to create an executable using <a href="https://cmake.org/cmake/help/latest/command/add_executable.html">add_executable</a></p>
+			<pre><code class="cmake">add_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})</code></pre>
+
+			<h4>Add Compile Features</h4>
+			<p>Add custom compile features such as the C++ version to be used.</p>
+			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/target_compile_features.html">target_compile_features</a></p>
+			<pre><code class="cmake">target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)</code></pre>
+
+			<h4>Link Libraries</h4>
+			<p>Link external libraries to your project.</p>
+			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html">target_link_libraries</a></p>
+			<pre><code class="cmake">target_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)</code></pre>
+
+			<h4>Target Include Directories</h4>
+			<p>Target - links to specific project</p>
+			<p>Normal - links globally</p>
+			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/target_include_directories.html">target_include_directories</a></p>
+			<pre><code class="cmake">target_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)</code></pre>
+
+
+
+			<h3>Overall Structure</h3>
+			<pre><code class="cmake">cmake_minimum_required(VERSION "3.19.2")
+
+project("project_name")
+
+find_package(*package_name* REQUIRED)
+
+set(NAME_SRC
+	src/main.cpp
+	src/example.cpp)
+
+set(NAME_H
+	include/main.h
+	include/example.h)
+
+set(EXE_PATH ${CMAKE_BINARY_DIR}/bin)
+
+include_directories(${CMAKE_SOURCE_DIR}/include ...)
+
+add_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)
+
+target_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)</code></pre>
+
+		</div>
+	</div>	
+</body>
+
+
+
+
