@@ -62,10 +62,22 @@ endif()
 
 include(${CPM_DOWNLOAD_LOCATION})</code></pre>
 
-
+			<h3>Add A Package</h3>
+			<p>Add a package to your C++ project. I am not sure if the list of packages is limited to those listed in on <a href="https://github.com/cpm-cmake/CPM.cmake/wiki/More-Snippets">this page</a>. Perhaps other packages can be installed this way with the right configuration.</p>
+			<pre><code class="cmake">CPMAddPackage(
+	NAME # The unique name of the dependency (should be the exported target's name)
+	VERSION	# The minimum version of the dependency (optional, defaults to 0)
+	OPTIONS	# Configuration options passed to the dependency (optional)
+	DOWNLOAD_ONLY # If set, the project is downloaded, but not configured (optional)
+	[...]         # Origin parameters forwarded to FetchContent_Declare, see below
+)</code></pre>
 			
-			<h3>Setup</h3>
-			<p>Create a file called CMakeLists.txt in your working directory</p>
+			<h3>Link A Library (if added)</h3>
+			<p>Once downloaded and added it needs to be linked to your C++ project.</p>
+			<pre><code class="cmake">if(*library_name*_ADDED)
+	add_library(*library_name* INTERFACE IMPORTED)
+	target_include_directories(*library_name* INTERFACE ${*library_source_dir})
+endif()</code></pre>
 			
 
 		</div>

@@ -1,0 +1,66 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - LoRaWAN Libraries</title>
+	<meta name="description" content="LoRaWAN Libraries and their configuration">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>Libraries</h2>
+			<h3>Description</h3>
+			<p>Low power wide area network protocol (LoRaWAN) is used to send long range messages between nodes and clients. These messages are quite small ~51 bytes, but with propper packaging can provide suffient information for capturing remote sensor data.</p>
+			<p>Documentation: <a href="https://github.com/nlohmann/json">nlohmann/json</a></p>
+
+			<h3>Setup Libraries</h3>
+			<h4>MCCI-lmic - arduino-lmic</h4>
+			<p>Fairly low-level library that requires some configuration to ensure the right region is selected before intergrating into your project.</p>
+			<p>Documentation: <a href="https://github.com/mcci-catena/arduino-lmic">arduino-lmic</a></p>
+			<h5>Installation</h5>
+			<p>To install navigate to the Arduino Library Manager and search for "MCCI-limc".</p>
+			<p>Alternatively, download the <a href="https://github.com/mcci-catena/arduino-lmic">repository</a> as a zip and unpack it in your Arduino/Libraries folder.</p>
+			<p>Before using, navigate to lmic_project_config.h (in Arduino/Libraries/MCCI-lmic folder) and comment out regions except for your specific region.</p>
+			<pre><code class="cpp">//#define CFG_eu868 1
+//#define CFG_us915 1
+#define CFG_au915 1
+//#define CFG_as923 1
+//#define LMIC_COUNTRY_CODE LMIC_COUNTRY_CODE_JP	/* for as923-JP */
+//#define CFG_kr920 1
+//#define CFG_in866 1</code></pre>
+
+			<h4>MCCI-limc - arduino-lorawan (Alternative)</h4>
+			Higher level more "arduinoesque" type library.
+			<p>Documentation: <a href="https://github.com/mcci-catena/arduino-lorawan">arduino-lorawan</a></p>
+
+			<h3>Other Good Resources</h3>
+			<p><a href="https://marcoroda.com/2020/04/12/TTGO-LORA-TTN.html">Node-red with LoRa Node</a></p>
+			<p><a href="https://console.thethings.meshed.com.au/">Things Network (Australia)</a></p>
+			<p><a href="https://learn.adafruit.com/the-things-network-for-feather/arduino-code">Adafruit LoRaWAN feather tutorial</a></p>
+		</div>
+	</div>	
+</body>
+
+
+
+
