@@ -1,0 +1,137 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - Vim Commands</title>
+	<meta name="description" content="Useful vim commands">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>Commands (Cheatsheet)</h2>
+			<h3>Description</h3>
+			<p>Useful vim commands for navigating files, creating, editing and deleting code.</p>
+
+			<h3>Modes</h3>
+			<pre><code class="bash">i # Insert mode (before cursor)
+I # Insert mode (start of line)
+a # Insert mode (after cursor) 
+A # Insert mode (end of line)
+v # Visual mode
+V # Visual line mode
+Ctrl-v # Visual block
+: # Command mode</code></pre>
+
+			<h3>Navigation</h3>
+			<pre><code class="bash">e # Move to end of word
+w # Jump forward a word
+w # Jump word forward
+b # Jump word backward
+% # Jump to corresponding bracket
+} # Jump up to next space
+{ # Jump down to next space
+gg # Top of file
+G # Bottom of file
+M # Middle of screen
+nG # Move to line number n
+'' # Return to last position</code></pre>
+
+			<h3>View</h3>
+			<pre><code class="bash">zt # Cursor at top of screen
+zz # Put cursor at center of screen
+zb # Put cursor at bottom of screen</code></pre>
+
+			<h3>Modifying</h3>
+			<pre><code class="bash">dd # Delete line
+dw # Delete word
+dit # Delete inside html tags
+dct # Delete inside html tages and go to insert mode
+da* # Delete around defined char (*)
+di* # Delete inside defined char (*)
+dG # Delete from cursor to end of file
+d} # Delete from cursor to next line break
+d{ # Delete from cursor to previous line break
+
+P # Paste before cursor
+p # Paste after cursor
+
+yw # Copy word
+yy # Copy line
+
+A # Insert at end of line
+I # Insert at start of line</code></pre>
+
+			<h3>Searching</h3>
+			<pre><code class="bash">?"term" # Search for term (case-sensitive)
+:noh # Stop highlighting</code></pre>
+
+			<h3>Multiline Editing</h3>
+			<p>To edit multiple lines at once.</p>
+			<pre><code class="bash">Ctrl-v # Enter visual block mode
+j or k # Move down or up rows
+i # Insert mode
+esc # Escape (whereafter rows should load)</code></pre>
+
+			<p>Alternative, if visual multi is installed.</p>
+			<pre><code class="bash">Ctrl-n # Open visual multi
+n # Select next item
+i # Edit and insert new text
+esc # Escape visual multi-mode</code></pre>
+
+			<h4>Indent or De-indent Multiple Lines</h4>
+			<p>Entire file</p>
+			<pre><code class="bash">gg=G # Auto indent whole file</code></pre>
+
+			<p>Selection</p>
+			<pre><code class="bash">v # Enter visual mode
+j or k # To select multiple lines
+0...9< # To de-indent multiple times
+0...9> # To indent multiple times</code></pre>
+
+			<h3>Tags</h3>
+			<p>Requires ctags</p>
+
+			<h4>Installation</h4>
+			<pre><code class="bash">brew install ctags</code></pre>
+
+			<h4>Generate</h4>
+			<p>In the folder contain scripts you can run one of the following commands.</p>
+			<pre><code class="bash">ctags -R . # For all tags in all programs
+ctags -R --exclude=node_modules . # Exclude a folder
+ctags -R --exclude=.git --exclude=node_modules . # Exclude multiple folders</code></pre>
+
+			<h4>Usage</h4>
+			<pre><code class="bash">:tags # Show tag stack
+:tag "name" # Go to defined tag
+Ctrl-] # Jump to tag definition
+:tn # Jump to next tag
+:tp # Jump to previous tag
+g] # See all tags for a selected definition</code></pre>
+
+
+
+		</div>
+	</div>	
+</body>
+
+
+

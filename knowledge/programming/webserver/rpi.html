@@ -1,0 +1,134 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - Raspberry Pi Webserver</title>
+	<meta name="description" content="Raspberry Pi deployed website with https">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>Commands (Cheatsheet)</h2>
+			<h3>Description</h3>
+			<p>Information for setting up a secure (https) webserver using a raspberry pi, nginx, certbot and a DNS provider. Based on a tutoiral from <a href="https://youtu.be/OWAqilIVNgE">Luke Smith</a>; however, in this version, a Raspberry Pi was used to host the site instead of a cloud service provider such as Amazon. Other good resources include <a href="https://youtu.be/QdHvS0D1zAI">this video</a> from Fireship, which talks about the deployment of a website on a Raspberry Pi.</p>
+
+			<h3>Proxy Server (nginx)</h3>
+			<ul>
+				<li>Reverse proxy server (TCP/UDP)</li>
+				<li>Documentation: <a href="https://nginx.org/en/">nginx</a></li>
+				<li>Tutorial: <a href="https://pimylifeup.com/raspberry-pi-nginx/">PiMyLifeUp</a></li>
+			</ul>
+			<h4>Installation</h4>
+			<pre><code class="bash">sudo apt-get remove apache2 # Ensure apache2 in not installed
+sudo apt-get install nginx # Install</code></pre>
+
+			<h4>Setup</h4>
+			<p>Copy the default nginx configuration to a new configuration:</p>
+			<pre><code class="bash">cp /etc/nginx/sites-available/default /etc/nginx/sites-available/your_site_name # Replace your_site_name</code></pre>
+			<p>Edit the newly created file (/etc/nginx/sites-available/your_site_name) to display the following</p>
+			<pre><code class="bash">server {
+	listen 80;
+	listen [::]:80 ;
+
+	root /var/www/*website_file_dir*;
+
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name *your_website_address*;
+
+	location / {
+		if ($request_uri ~ ^/(.*)\.html) {
+			return 302 /$1;
+		}
+		try_files $uri $uri.html $uri/ =404;
+	}</code></pre>
+			<p>The code in the location scope allow html files to be indexed without a .html extension in the websites URL.</p>
+			<p>Put newley created configuration into enabled sites directory:</p>
+			<pre><code class="bash">ln -s /etc/nginx/sites-available/your_site_name /etc/nginx/sites-enabled/</code></pre>
+
+			<p>Make directory that holds website files (index.html etc.):</p>
+			<pre><code class="bash">mkdir /var/www/your_site_name
+cd /var/www/your_site_name
+touch index.html # Create and edit mainpage as needed</code></pre>
+
+			<h4>nginx Commands</h4>
+			<pre><code class="bash">sudo systemctl start nginx # Start server
+sudo systemctl status nginx # Server status
+sudo systemctl stop nginx # Stop server
+sudo systemctl restart nginx # Reboot server
+sudo killall nginx # Stop all processes</code></pre>
+
+			<h3>HTTPS Certificate (certbot</h3>
+			<p>Gives your website a certificate of security that browsers can recognise and thus wont show that the site is insecure</p>
+
+			<h4>Installation</h4>
+			<pre><code class="bash">sudo apt-get install certbo python-certbot-nginx</code></pre>
+
+			<h4>Setup</h4>
+			<pre><code class="bash">sudo certbot --nginx</code></pre>
+
+			<p>Follow the following commands:</p>
+			<ol>
+				<li>Enter email</li>
+				<li>Agree to terms of service</li>
+				<li>Don't share email</li>
+				<li>Select https addresses</li>
+				<li>Redirect http to https</li>
+			</ol>
+
+			<p>Note that certbot certificates expire every six months. To renew:</p>
+			<pre><code class="bash">sudo certbot renew # Renew certificate</code></pre>
+
+			<h3>Port Forwarding</h3>
+			<p>You need to setup port forwarding on your router in order for users outside your local network to access your site.</p>
+			<pre><code class="bash">ip route # Find router address</code></pre>
+
+			<p>Type the router address into a browser, navigate to port forwarding and add:</p>
+			<ul>
+				<li>Protocol: TCP</li>
+				<li>WAN port: 80</li>
+				<li>LAN port: 80</li>
+				<li>Destination IP address: local_ip_address</li>
+			</ul>
+
+			<p>You may also need to set (port 80 for http and 443 for https):</p>
+			<ul>
+				<li>Protocol: TCP</li>
+				<li>WAN port: 443</li>
+				<li>LAN port: 443</li>
+				<li>Destination IP address: local_ip_address</li>
+			</ul>
+
+			<h3>Other Useful Commands</h3>
+			<pre><code class="bash">hostname -I # Get local IP address
+curl icanhazip.com # Get public IPv6 address
+curl ipv4.icanhazip.com # Get public IPv4 address</code></pre>
+
+
+
+
+		</div>
+	</div>	
+</body>
+
+
+
