@@ -1,0 +1,86 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Harvey Bates - Jupyter Notebook/Lab</title>
+	<meta name="description" content="Jupyter Notebook useful Commands">
+	<meta name="author" content="Harvey Bates">
+	<link rel="stylesheet" href="../../../../css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="heading"> 
+			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
+		</div> 
+		<div class="navbar">
+			<a href="#about" class="about-tab">About</a>
+			<a href="blog" class="blog-tab">Blog</a>
+			<a href="publications" title="publications" class="publications-tab">Publications</a>
+			<a href="https://harveybates.xyz" class="home-tab">Home</a>
+		</div>
+	</div>
+
+	<div class="card-container">
+		<div class="card">
+			<h2>Jupyter Notebook / Lab</h2>
+			<h3>Description</h3>
+			<p>Useful commands for programming within Jupyter Notebook.</p>
+			
+			<h3>Data Preperation</h3>
+			<h4>Useful imports</h4>
+			<pre><code class="python">import matplotlib.pyplot as plt # Matplot library
+import pandas as pd # Pandas (data processing from excel etc.)
+import numpy as np # Many useful array functions</code></pre>
+
+			<h4>Preparing Dataframe</h4>
+			<p>Documentation: <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">read_csv</a></p>
+			<pre><code class="python">dataframe = pd.read_csv("filename.csv") # Basic loading
+dataframe = pd.read_csv("filename.csv").dropna() # Remove null values
+dataframe = pd.read_csv("filename.csv", delimiter=';') # Define seperator</code></pre>
+
+			<p>Documentation: <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html">read_excel</a></p>
+			<pre><code class="python">dataframe = pd.read_excel("filename.csv") # Basic loading
+dataframe = pd.read_csv("filename.csv", sheet_name="name") # Define sheet name
+dataframe.head() # Show first five rows and labels</code></pre>
+
+			<h4>Working with dates</h4>
+			<p>Imports:</p>
+			<pre><code class="python">import matplotlib.dates as md
+import matplotlib.ticker as mticker
+from datetime import datetime</code></pre>
+			<p>Convert string values to datetime values</p>
+			<pre><code class="python">covertedValues = [datetime.strptime(value, "%d/%m/%y ...") for value in values]
+# Modify string formatter to match your specific string</code></pre>
+			<p>Documentation: <a href="
+	
+
+
+			<h3>Window Navigation</h3>
+			<pre><code class="bash">c # New window
+tab # Swap between windows
+n # Next window
+0...9 # Window by number</code></pre>
+			
+			<h3>Panes Navigation</h3>
+			<pre><code class="bash">; # Swap between panes
+" # Split horizontally
+% # Split vertically
+} # Enter scroll mode
+! # Convert pane to window</code></pre>
+
+			<p>To exit Tmux, type exit in the command line.</p>
+			
+
+
+		</div>
+	</div>	
+</body>
+
+
+
+
