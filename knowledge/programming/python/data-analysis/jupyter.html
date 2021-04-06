@@ -53,28 +53,12 @@ dataframe.head() # Show first five rows and labels</code></pre>
 			<pre><code class="python">import matplotlib.dates as md
 import matplotlib.ticker as mticker
 from datetime import datetime</code></pre>
-			<p>Convert string values to datetime values</p>
+			<p>Convert string values to datetime values. Useful for when you want to plot datetime series data as matplotlib has some functions to set the tick intervals if you have datetime objects (e.g. matplotlib.dates.DateFormatter())</p>
 			<pre><code class="python">covertedValues = [datetime.strptime(value, "%d/%m/%y ...") for value in values]
 # Modify string formatter to match your specific string</code></pre>
-			<p>Documentation: <a href="
+			<p>Documentation: <a href="https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior">Datetime formatting string directives</a></p>
 	
 
-
-			<h3>Window Navigation</h3>
-			<pre><code class="bash">c # New window
-tab # Swap between windows
-n # Next window
-0...9 # Window by number</code></pre>
-			
-			<h3>Panes Navigation</h3>
-			<pre><code class="bash">; # Swap between panes
-" # Split horizontally
-% # Split vertically
-} # Enter scroll mode
-! # Convert pane to window</code></pre>
-
-			<p>To exit Tmux, type exit in the command line.</p>
-			
 
 
 		</div>
