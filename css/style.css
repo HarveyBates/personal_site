@@ -40,6 +40,11 @@ body {
 	color: #ffbb33;
 }
 
+.knowledge-tab.ui-btn-active {
+	text-decoration: underline;
+	color: #ffbb33;	
+}
+
 .blog-tab.ui-btn-active {
 	text-decoration: underline;
 	color: #ffbb33;
