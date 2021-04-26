@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Miscellaneous</title>
+  <title>Commands</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -84,31 +84,23 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Miscellaneous</h1>
+<h1 class="title">Commands</h1>
 </header>
 <h2 id="description">Description</h2>
-<p>Various bash commands that are useful but don’t have a specific order that is worthy of their own page. Also contains useful terminal based programs.</p>
-<h2 id="date-and-time">Date and Time</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cal</span> <span class="co"># Display calendar</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cal</span> <span class="at">-3</span> <span class="co"># Display calendar with next and prev month</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> <span class="co"># Display date</span></span></code></pre></div>
-<h2 id="system">System</h2>
-<p>Display certain system information.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span> <span class="co"># Display current processes</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">system_profiler</span> SPDisplayDataType <span class="kw">|</span> <span class="fu">grep</span> Resolution <span class="co"># Get sys resolution (MacOS)</span></span></code></pre></div>
-<h2 id="tree">Tree</h2>
-<p>Displays the current folders tree structure in the terminal.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install tree <span class="co"># Install</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> <span class="co"># Run to display tree structure</span></span></code></pre></div>
-<h2 id="newsboat">Newsboat</h2>
-<p>RSS terminal reader for RSS feeds.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install newboat <span class="co"># Install</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">newsboat</span> <span class="co"># Run</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">vi</span> ~/.newsboat/urls <span class="co"># Add RSS feed URL&#39;s</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">vi</span> ~/.newsboat/config <span class="co"># Add specific configuration</span></span></code></pre></div>
-<p>For config resources see this <a href="https://wiki.archlinux.org/index.php/Newsboat#Configuration">link</a>.</p>
-<h2 id="file-transfer-for-android-devices">File transfer (for android devices)</h2>
-<p>Add and remove files from android device on a mac. Run from GUI application after installation.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cash</span> android-file-transfer <span class="co"># Install</span></span></code></pre></div>
+<p>Useful for converting files from one markup to another (e.g. .tex -&gt; html).</p>
+<h2 id="setup">Setup</h2>
+<p>Direct: <a href="https://pandoc.org/installing.html">Install Pandoc</a></p>
+<p>Homebrew (MacOS &amp; Linux):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install pandoc</span></code></pre></div>
+<h2 id="examples">Examples</h2>
+<h3 id="markdown-to-html">Markdown to html</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.md <span class="at">-c</span> style.css <span class="at">-o</span> output.html <span class="at">--metadata</span><span class="op">=</span><span class="st">&quot;Title&quot;</span></span></code></pre></div>
+<h3 id="latex-to-markdown">LaTeX to markdown</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.tex <span class="at">-o</span> output.text</span></code></pre></div>
+<h3 id="slide-show-beamer">Slide show (beamer)</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer input.md <span class="at">-o</span> output.pdf</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer input.tex <span class="at">-o</span> output.pdf</span></code></pre></div>
+<h3 id="other">Other</h3>
+<p>Useful commands can be found on the pandoc site. <a href="https://pandoc.org/demos.html">https://pandoc.org/demos.html</a></p>
 </body>
 </html>
