@@ -1,137 +1,178 @@
-<!doctype html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-	<meta charset="utf-8">
-	<title>Harvey Bates - Vim Commands</title>
-	<meta name="description" content="Useful vim commands">
-	<meta name="author" content="Harvey Bates">
-	<link rel="stylesheet" href="../../../css/style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Vim Commands</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../css/knowledge.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
-
 <body>
-
-	<div class="header">
-		<div class="heading"> 
-			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
-		</div> 
-		<div class="navbar">
-			<a href="#about" class="about-tab">About</a>
-			<a href="blog" class="blog-tab">Blog</a>
-			<a href="publications" title="publications" class="publications-tab">Publications</a>
-			<a href="https://harveybates.xyz" class="home-tab">Home</a>
-		</div>
-	</div>
-
-	<div class="card-container">
-		<div class="card">
-			<h2>Commands (Cheatsheet)</h2>
-			<h3>Description</h3>
-			<p>Useful vim commands for navigating files, creating, editing and deleting code.</p>
-
-			<h3>Modes</h3>
-			<pre><code class="bash">i # Insert mode (before cursor)
-I # Insert mode (start of line)
-a # Insert mode (after cursor) 
-A # Insert mode (end of line)
-v # Visual mode
-V # Visual line mode
-Ctrl-v # Visual block
-: # Command mode</code></pre>
-
-			<h3>Navigation</h3>
-			<pre><code class="bash">e # Move to end of word
-w # Jump forward a word
-w # Jump word forward
-b # Jump word backward
-% # Jump to corresponding bracket
-} # Jump up to next space
-{ # Jump down to next space
-gg # Top of file
-G # Bottom of file
-M # Middle of screen
-nG # Move to line number n
-'' # Return to last position</code></pre>
-
-			<h3>View</h3>
-			<pre><code class="bash">zt # Cursor at top of screen
-zz # Put cursor at center of screen
-zb # Put cursor at bottom of screen</code></pre>
-
-			<h3>Modifying</h3>
-			<pre><code class="bash">dd # Delete line
-dw # Delete word
-dit # Delete inside html tags
-dct # Delete inside html tages and go to insert mode
-da* # Delete around defined char (*)
-di* # Delete inside defined char (*)
-dG # Delete from cursor to end of file
-d} # Delete from cursor to next line break
-d{ # Delete from cursor to previous line break
-
-P # Paste before cursor
-p # Paste after cursor
-
-yw # Copy word
-yy # Copy line
-
-A # Insert at end of line
-I # Insert at start of line</code></pre>
-
-			<h3>Searching</h3>
-			<pre><code class="bash">?"term" # Search for term (case-sensitive)
-:noh # Stop highlighting</code></pre>
-
-			<h3>Multiline Editing</h3>
-			<p>To edit multiple lines at once.</p>
-			<pre><code class="bash">Ctrl-v # Enter visual block mode
-j or k # Move down or up rows
-i # Insert mode
-esc # Escape (whereafter rows should load)</code></pre>
-
-			<p>Alternative, if visual multi is installed.</p>
-			<pre><code class="bash">Ctrl-n # Open visual multi
-n # Select next item
-i # Edit and insert new text
-esc # Escape visual multi-mode</code></pre>
-
-			<h4>Indent or De-indent Multiple Lines</h4>
-			<p>Entire file</p>
-			<pre><code class="bash">gg=G # Auto indent whole file</code></pre>
-
-			<p>Selection</p>
-			<pre><code class="bash">v # Enter visual mode
-j or k # To select multiple lines
-0...9< # To de-indent multiple times
-0...9> # To indent multiple times</code></pre>
-
-			<h3>Tags</h3>
-			<p>Requires ctags</p>
-
-			<h4>Installation</h4>
-			<pre><code class="bash">brew install ctags</code></pre>
-
-			<h4>Generate</h4>
-			<p>In the folder contain scripts you can run one of the following commands.</p>
-			<pre><code class="bash">ctags -R . # For all tags in all programs
-ctags -R --exclude=node_modules . # Exclude a folder
-ctags -R --exclude=.git --exclude=node_modules . # Exclude multiple folders</code></pre>
-
-			<h4>Usage</h4>
-			<pre><code class="bash">:tags # Show tag stack
-:tag "name" # Go to defined tag
-Ctrl-] # Jump to tag definition
-:tn # Jump to next tag
-:tp # Jump to previous tag
-g] # See all tags for a selected definition</code></pre>
-
-
-
-		</div>
-	</div>	
+<header id="title-block-header">
+<h1 class="title">Vim Commands</h1>
+</header>
+<p style="text-align: center;">
+<a href="https://harveybates.xyz/">Home</a> - <a 
+href="https://harveybates.xyz/knowledge/index">Back</a>
+</p>
+<h2 id="description">Description</h2>
+<p>Useful vim commands for navigating files, creating, editing and deleting code.</p>
+<h2 id="modes">Modes</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span> <span class="co"># Insert mode (before cursor)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">I</span> <span class="co"># Insert mode (start of line)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span> <span class="co"># Insert mode (after cursor) </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">A</span> <span class="co"># Insert mode (end of line)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">v</span> <span class="co"># Visual mode</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">V</span> <span class="co"># Visual line mode</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-v</span> <span class="co"># Visual block</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">:</span> <span class="co"># Command mode</span></span></code></pre></div>
+<h2 id="navigation">Navigation</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">e</span> <span class="co"># Move to end of word</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">w</span> <span class="co"># Jump forward a word</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">w</span> <span class="co"># Jump word forward</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">b</span> <span class="co"># Jump word backward</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> <span class="co"># Jump to corresponding bracket</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="er">}</span> <span class="co"># Jump up to next space</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span> <span class="co"># Jump down to next space</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">gg</span> <span class="co"># Top of file</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">G</span> <span class="co"># Bottom of file</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">M</span> <span class="co"># Middle of screen</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">nG</span> <span class="co"># Move to line number n</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;&#39;</span> <span class="co"># Return to last position</span></span></code></pre></div>
+<h2 id="view">View</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zt</span> <span class="co"># Cursor at top of screen</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">zz</span> <span class="co"># Put cursor at center of screen</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zb</span> <span class="co"># Put cursor at bottom of screen</span></span></code></pre></div>
+<h2 id="modifying">Modifying</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dd</span> <span class="co"># Delete line</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dw</span> <span class="co"># Delete word</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dit</span> <span class="co"># Delete inside html tags</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dct</span> <span class="co"># Delete inside html tages and go to insert mode</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">da*</span> <span class="co"># Delete around defined char (*)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">di*</span> <span class="co"># Delete inside defined char (*)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">dG</span> <span class="co"># Delete from cursor to end of file</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">d}</span> <span class="co"># Delete from cursor to next line break</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">d{</span> <span class="co"># Delete from cursor to previous line break</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">P</span> <span class="co"># Paste before cursor</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">p</span> <span class="co"># Paste after cursor</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">yw</span> <span class="co"># Copy word</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">yy</span> <span class="co"># Copy line</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ex">A</span> <span class="co"># Insert at end of line</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ex">I</span> <span class="co"># Insert at start of line</span></span></code></pre></div>
+<h2 id="searching">Searching</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span><span class="st">&quot;term&quot;</span> <span class="co"># Search for term (case-sensitive)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">:noh</span> <span class="co"># Stop highlighting</span></span></code></pre></div>
+<h2 id="multi-line-editing">Multi-line Editing</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-v</span> <span class="co"># Enter visual block mode</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">j</span> or k <span class="co"># Move down or up rows</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span> <span class="co"># Insert mode</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">esc</span> <span class="co"># Escape (whereafter rows should load)</span></span></code></pre></div>
+<p>Alternative using visual-multi (if installed).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-n</span> <span class="co"># Open visual multi</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">n</span> <span class="co"># Select next item</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span> <span class="co"># Edit and insert new text</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">esc</span> <span class="co"># Escape visual multi-mode</span></span></code></pre></div>
+<h3 id="indent-or-de-indent-multiple-lines">Indent or De-Indent Multiple Lines</h3>
+<h4 id="entire-file.">Entire file.</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">gg</span><span class="op">=</span>G</span></code></pre></div>
+<h4 id="selection">Selection</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">v</span> <span class="co"># Enter visual mode</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">j</span> or k <span class="co"># To select multiple lines</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">0...9</span><span class="op">&lt;</span> # To de-indent multiple times</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">0...9</span><span class="op">&gt;</span> # To indent multiple times</span></code></pre></div>
+<h2 id="tags">Tags</h2>
+<p>Require CTags.</p>
+<h3 id="installation">Installation</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install ctags</span></code></pre></div>
+<h3 id="generate">Generate</h3>
+<p>In the folder contain scripts you can run one of the following commands.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ctags</span> <span class="at">-R</span> . <span class="co"># For all tags in all programs</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ctags</span> <span class="at">-R</span> <span class="at">--exclude</span><span class="op">=</span>node_modules . <span class="co"># Exclude a folder</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ctags</span> <span class="at">-R</span> <span class="at">--exclude</span><span class="op">=</span>.git <span class="at">--exclude</span><span class="op">=</span>node_modules . <span class="co"># Exclude multiple folders</span></span></code></pre></div>
+<h3 id="usage">Usage</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">:tags</span> <span class="co"># Show tag stack</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">:tag</span> <span class="st">&quot;name&quot;</span> <span class="co"># Go to defined tag</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-]</span> <span class="co"># Jump to tag definition</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">:tn</span> <span class="co"># Jump to next tag</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">:tp</span> <span class="co"># Jump to previous tag</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">g]</span> <span class="co"># See all tags for a selected definition</span></span></code></pre></div>
 </body>
-
-
-
+</html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Commands</title>
+  <title>Useful Pandoc Commands</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -84,8 +84,12 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Commands</h1>
+<h1 class="title">Useful Pandoc Commands</h1>
 </header>
+<p style="text-align: center;">
+<a href="https://harveybates.xyz/">Home</a> - <a 
+    href="https://harveybates.xyz/knowledge/index">Back</a>
+</p>
 <h2 id="description">Description</h2>
 <p>Useful for converting files from one markup to another (e.g. .tex -&gt; html).</p>
 <h2 id="setup">Setup</h2>
@@ -93,13 +97,52 @@
 <p>Homebrew (MacOS &amp; Linux):</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install pandoc</span></code></pre></div>
 <h2 id="examples">Examples</h2>
+<h3 id="metadata">Metadata</h3>
+<p>Insert at top of <code>.md</code> file to give some metadata in the form of a <code>.yml</code> file (without actually creating a <code>.yml</code> file).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> TITLE</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Author</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">header</span><span class="kw">:</span><span class="at"> Header</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">footer</span><span class="kw">:</span><span class="at"> Footer</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">geometry</span><span class="kw">:</span><span class="at"> margin=1in</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abstract</span><span class="kw">:</span><span class="at"> Enter abstract </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span></code></pre></div>
+<h3 id="links">Links</h3>
+<p>Add some links to the header.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">style</span><span class="ot">=</span><span class="st">&quot;text-align: center;&quot;</span><span class="kw">&gt;&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;https://harveybates.xyz/&quot;</span><span class="kw">&gt;</span>Home<span class="kw">&lt;/a&gt;</span> - <span class="kw">&lt;a</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ot">href=</span><span class="st">&quot;https://harveybates.xyz/knowledge/index&quot;</span><span class="kw">&gt;</span>Back<span class="kw">&lt;/a&gt;&lt;/p&gt;</span></span></code></pre></div>
 <h3 id="markdown-to-html">Markdown to html</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.md <span class="at">-c</span> style.css <span class="at">-o</span> output.html <span class="at">--metadata</span><span class="op">=</span><span class="st">&quot;Title&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.md <span class="at">-c</span> style.css <span class="at">-o</span> output.html <span class="at">--metadata</span><span class="op">=</span><span class="st">&quot;Title&quot;</span></span></code></pre></div>
 <h3 id="latex-to-markdown">LaTeX to markdown</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.tex <span class="at">-o</span> output.text</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.tex <span class="at">-o</span> output.text</span></code></pre></div>
+<h3 id="markdown-to-pdf">Markdown to pdf</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.md <span class="at">-o</span> output.pdf</span></code></pre></div>
+<h4 id="citations">Citations</h4>
+<p>Define in <code>.bib</code> file.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bib"><code class="sourceCode bibtex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">name2020</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">author</span>={Name, LastName},</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span>={Title},</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">journal</span>={Journal},</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span>={2020},</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Define in text.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@name2020</span><span class="co">]</span></span></code></pre></div>
+<p>Compile in terminal.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> input.md <span class="at">--bibliography</span><span class="op">=</span>ref.bib <span class="at">--citeproc</span> <span class="at">-o</span> output.pdf</span></code></pre></div>
+<h3 id="figure-numbering">Figure numbering</h3>
+<p>Using <a href="https://github.com/tomduck/pandoc-fignos">pandoc-fignos</a>.</p>
+<h4 id="install">Install</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install pandoc-fignos <span class="at">--user</span></span></code></pre></div>
+<h4 id="use">Use</h4>
+<p>Define figure with caption:</p>
+<pre class="none"><code>![Caption.](image.png){#fig:Name}</code></pre>
+<p>Reference figure with “Fig” extension:</p>
+<pre class="none"><code>\*@Fig:Name</code></pre>
+<p>When compiling use the following tag.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">--filter</span> pandoc-fignos</span></code></pre></div>
 <h3 id="slide-show-beamer">Slide show (beamer)</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer input.md <span class="at">-o</span> output.pdf</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer input.tex <span class="at">-o</span> output.pdf</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer input.md <span class="at">-o</span> output.pdf</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer input.tex <span class="at">-o</span> output.pdf</span></code></pre></div>
 <h3 id="other">Other</h3>
 <p>Useful commands can be found on the pandoc site. <a href="https://pandoc.org/demos.html">https://pandoc.org/demos.html</a></p>
 </body>

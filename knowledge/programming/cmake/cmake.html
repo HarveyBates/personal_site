@@ -1,141 +1,172 @@
-
-<!doctype html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-	<meta charset="utf-8">
-	<title>Harvey Bates - CMake</title>
-	<meta name="description" content="CMake">
-	<meta name="author" content="Harvey Bates">
-	<link rel="stylesheet" href="../../../css/style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/routeros.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CMake Introduction</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../css/knowledge.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
-
 <body>
-
-	<div class="header">
-		<div class="heading"> 
-			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
-		</div> 
-		<div class="navbar">
-			<a href="#about" class="about-tab">About</a>
-			<a href="blog" class="blog-tab">Blog</a>
-			<a href="publications" title="publications" class="publications-tab">Publications</a>
-			<a href="https://harveybates.xyz" class="home-tab">Home</a>
-		</div>
-	</div>
-
-	<div class="card-container">
-		<div class="card">
-			<h2>CMake</h2>
-			<h3>Description</h3>
-			<p>CMake allows for C++ applications to be compiled without entering library, linkers and files manually each time you want to compile your project.</p>
-	
-			<h3>Installation</h3>
-			<p>Main Site: <a href="https://cmake.org/install/">CMake</a></p>
-
-			<h4>Homebrew: </h4>
-			<pre><code class="bash">brew install --cask cmake</code></pre>
-			
-			<h3>Setup</h3>
-			<p>Create a file called CMakeLists.txt in your working directory</p>
-			<h4>Define Operating System</h4>
-			<pre><code class="cmake">if(UNIX AND NOT APPLE)
-	... # Linux
-elseif(APPLE)
-	... # MacOS
-else()
-	... # Windows
-endif()</code></pre>
-
-			<h4>Define Minimum Version</h4>
-			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html">cmake_minimum_required</a></p>
-			<pre><code class="cmake">cmake_minimum_required(VERSION "3.19.2")
-# Just use current version you are using</code></pre>
-			
-			<h4>Define Project Name</h4>
-			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/project.html">project</a></p>
-			<pre><code class="cmake">project("project_name")</code></pre>
-
-			<h4>Locate Installed Package</h4>
-			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/find_package.html">find_package</a></p>
-			<pre><code class="cmake">find_package(*package_name* REQUIRED)</code></pre>
-
-			<h4>Set Source Directory</h4>
-			<p>This is where all your C++ (.cpp) files will be located</p>
-			<pre><code class="cmake">set(NAME_SRC
-	src/main.cpp
-	src/example.cpp)</code></pre>
-
-			<h4>Set Include Directory</h4>
-			<p>This is where all your C++ header (.h or .hpp) files will be located</p>
-			<pre><code class="cmake">set(NAME_H
-	include/main.h
-	include/example.h)</code></pre>
-
-			<h4>Set Executable Path</h4>
-			<p>This is where an executable (.exe) file will be generated.</p>
-			<pre><code class="cmake">set(EXE_PATH ${CMAKE_BINARY_DIR}/bin)</code></pre>
-			<p>CMAKE_BINARY_DIR represents the directroy where your CMakeLists.txt file is located</p>
-			
-			<h4>Include Directories</h4>
-			<p>Add muliple include directories of packages as <a href="https://cmake.org/cmake/help/latest/command/include_directories.html">include_directories</a></p>
-			<pre><code class"cmake">include_directories(${CMAKE_SOURCE_DIR}/include ...)</code></pre>
-
-			<h4>Add Executable</h4>
-			<p>Add components to create an executable using <a href="https://cmake.org/cmake/help/latest/command/add_executable.html">add_executable</a></p>
-			<pre><code class="cmake">add_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})</code></pre>
-
-			<h4>Add Compile Features</h4>
-			<p>Add custom compile features such as the C++ version to be used.</p>
-			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/target_compile_features.html">target_compile_features</a></p>
-			<pre><code class="cmake">target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)</code></pre>
-
-			<h4>Link Libraries</h4>
-			<p>Link external libraries to your project.</p>
-			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html">target_link_libraries</a></p>
-			<pre><code class="cmake">target_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)</code></pre>
-
-			<h4>Target Include Directories</h4>
-			<p>Target - links to specific project</p>
-			<p>Normal - links globally</p>
-			<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/target_include_directories.html">target_include_directories</a></p>
-			<pre><code class="cmake">target_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)</code></pre>
-
-
-
-			<h3>Overall Structure</h3>
-			<pre><code class="cmake">cmake_minimum_required(VERSION "3.19.2")
-
-project("project_name")
-
-find_package(*package_name* REQUIRED)
-
-set(NAME_SRC
-	src/main.cpp
-	src/example.cpp)
-
-set(NAME_H
-	include/main.h
-	include/example.h)
-
-set(EXE_PATH ${CMAKE_BINARY_DIR}/bin)
-
-include_directories(${CMAKE_SOURCE_DIR}/include ...)
-
-add_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})
-
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)
-
-target_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)</code></pre>
-
-		</div>
-	</div>	
+<header id="title-block-header">
+<h1 class="title">CMake Introduction</h1>
+</header>
+<p style="text-align: center;">
+<a href="https://harveybates.xyz/">Home</a> - <a href="https://harveybates.xyz/knowledge/index">Back</a>
+</p>
+<h2 id="description">Description</h2>
+<p>CMake allows for C++ applications to be compiled without entering library, linkers and files manually each time you want to compile your project.</p>
+<h2 id="installation">Installation</h2>
+<p>Main Site: <a href="https://cmake.org/install/">CMake</a></p>
+<h3 id="homebrew-macos-linux">Homebrew (MacOS &amp; Linux)</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> cmake</span></code></pre></div>
+<h2 id="setup">Setup</h2>
+<p>Create a file called CMakeLists.txt in your working directory</p>
+<h3 id="define-operating-system">Define Operating System</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span>(<span class="dv">UNIX</span> <span class="ot">AND</span> <span class="ot">NOT</span> <span class="dv">APPLE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ... <span class="co"># Linux</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">elseif</span>(<span class="dv">APPLE</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ... <span class="co"># MacOS</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span>()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ... <span class="co"># Windows</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">endif</span>()</span></code></pre></div>
+<h3 id="define-minimum-version">Define Minimum Version</h3>
+<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html">cmake_minimum_required</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">cmake_minimum_required</span>(<span class="ot">VERSION</span> <span class="st">&quot;3.19.2&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Just use current version you are using</span></span></code></pre></div>
+<h3 id="define-project-name">Define Project Name</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">project</span>(<span class="st">&quot;project_name&quot;</span>)</span></code></pre></div>
+<h3 id="locate-installed-package">Locate Installed Package</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">find_package</span>(*package_name* <span class="ot">REQUIRED</span>)</span></code></pre></div>
+<h3 id="set-source-directory">Set Source Directory</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(NAME_SRC</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    src/main.cpp</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    src/example.cpp)</span></code></pre></div>
+<h3 id="set-include-directory">Set Include Directory</h3>
+<p>This is where all your C++ header (.h or .hpp) files will be located</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(NAME_H</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    include/main.h</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    include/example.h)  </span></code></pre></div>
+<h3 id="set-executable-path">Set Executable Path</h3>
+<p>This is where an executable (.exe) file will be generated.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(EXE_PATH <span class="dv">${CMAKE_BINARY_DIR}</span>/bin)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># CMAKE_BINARY_DIR represents the directroy where your CMakeLists.txt file is located</span></span></code></pre></div>
+<h3 id="include-directories">Include Directories</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">include_directories</span>(<span class="dv">${CMAKE_SOURCE_DIR}</span>/include ...)</span></code></pre></div>
+<h3 id="add-executable">Add Executable</h3>
+<p>Add components to create an executable.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_executable</span>(<span class="dv">${PROJECT_NAME}</span> <span class="dv">${NAME_SRC}</span> <span class="dv">${NAME_H}</span>)</span></code></pre></div>
+<h3 id="add-compile-features">Add Compile Features</h3>
+<p>Add custom compile features such as the C++ version to be used.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="dv">${PROJECT_NAME}</span> <span class="ot">PUBLIC</span> <span class="ot">cxx_std_17</span>)</span></code></pre></div>
+<h3 id="link-libraries">Link Libraries</h3>
+<p>Link your project to external libraries.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="dv">${PROJECT_NAME}</span> <span class="ot">PRIVATE</span> *library_name* ...)</span></code></pre></div>
+<h3 id="target-include-directories">Target Include Directories</h3>
+<p>Target - links to specific project</p>
+<p>Normal - links globally</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="dv">${PROJECT_NAME}</span> <span class="ot">PRIVATE</span> *library_name* ...)</span></code></pre></div>
+<h2 id="overall-structure">Overall Structure</h2>
+<p>See the <a href="https://github.com/HarveyBates/Phenobottle/blob/master/UserInterface/web_application/server/CMakeLists.txt">phenobottle’s CMake file</a> for further information.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">cmake_minimum_required</span>(<span class="ot">VERSION</span> <span class="st">&quot;3.19.2&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">project</span>(<span class="st">&quot;project_name&quot;</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">find_package</span>(*package_name* <span class="ot">REQUIRED</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(NAME_SRC</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    src/main.cpp</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    src/example.cpp)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(NAME_H</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    include/main.h</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    include/example.h)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span>(EXE_PATH <span class="dv">${CMAKE_BINARY_DIR}</span>/bin)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="kw">include_directories</span>(<span class="dv">${CMAKE_SOURCE_DIR}</span>/include ...)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="kw">add_executable</span>(<span class="dv">${PROJECT_NAME}</span> <span class="dv">${NAME_SRC}</span> <span class="dv">${NAME_H}</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="kw">target_compile_features</span>(<span class="dv">${PROJECT_NAME}</span> <span class="ot">PUBLIC</span> <span class="ot">cxx_std_17</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="kw">target_link_libraries</span>(<span class="dv">${PROJECT_NAME}</span> <span class="ot">PRIVATE</span> *library_name* ...)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="kw">target_include_directories</span>(<span class="dv">${PROJECT_NAME}</span> <span class="ot">PRIVATE</span> *library_name* ...)</span></code></pre></div>
 </body>
-
-
-
-
+</html>

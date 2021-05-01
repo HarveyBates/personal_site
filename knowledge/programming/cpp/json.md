@@ -1,3 +1,9 @@
+---
+	title: Using JSON with C++
+...
+
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+	href="https://harveybates.xyz/knowledge/index">Back</a></p>
 
 ## Description
 JSON formatted data is a great asset for sending and receiving formatted information. In C++ the nlohmann library provides an easy way to create and display JSON formatted data.

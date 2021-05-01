@@ -1,3 +1,11 @@
+---
+	title: Useful Pandoc Commands
+...
+
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+	href="https://harveybates.xyz/knowledge/index">Back</a></p>
+
+
 ## Description
 Useful for converting files from one markup to another (e.g. .tex -> html).
 
@@ -10,6 +18,26 @@ brew install pandoc
 ```
 
 ## Examples
+### Metadata
+Insert at top of ``.md`` file to give some metadata in the form of a ``.yml`` file (without actually creating a ``.yml`` file).
+```yml
+---
+title: TITLE
+author: Author
+header: Header
+footer: Footer
+geometry: margin=1in
+abstract: Enter abstract 
+...
+```
+### Links
+Add some links to the header.
+```html
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+href="https://harveybates.xyz/knowledge/index">Back</a></p>
+```
+
+
 ### Markdown to html
 ```bash
 pandoc -s input.md -c style.css -o output.html --metadata="Title"
@@ -18,6 +46,54 @@ pandoc -s input.md -c style.css -o output.html --metadata="Title"
 ### LaTeX to markdown
 ```bash
 pandoc -s input.tex -o output.text
+```
+
+### Markdown to pdf
+```bash
+pandoc -s input.md -o output.pdf
+```
+#### Citations
+Define in ``.bib`` file.
+```bib
+@article{name2020,
+	author={Name, LastName},
+	title={Title},
+	journal={Journal},
+	year={2020},
+}
+```
+
+Define in text.
+```md
+[@name2020]
+```
+
+Compile in terminal.
+```bash
+pandoc -s input.md --bibliography=ref.bib --citeproc -o output.pdf
+```
+
+### Figure numbering
+Using [pandoc-fignos](https://github.com/tomduck/pandoc-fignos).
+
+#### Install 
+```bash
+python3 -m pip install pandoc-fignos --user
+```
+
+#### Use
+Define figure with caption:
+```none
+![Caption.](image.png){#fig:Name}
+```
+Reference figure with "Fig" extension:
+```none
+\*@Fig:Name
+```
+
+When compiling use the following tag.
+```bash
+--filter pandoc-fignos
 ```
 
 ### Slide show (beamer)
