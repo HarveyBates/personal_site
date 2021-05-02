@@ -1,3 +1,10 @@
+---
+title: Web Functions in the Terminal
+...
+
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+href="https://harveybates.xyz/knowledge/index">Back</a></p>
+
 ## Description
 Commands for downloading and interacing with websites and web hosted files.
 

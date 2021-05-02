@@ -1,3 +1,10 @@
+---
+title: Arduino Command Line Interface (CLI)
+...
+
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+href="https://harveybates.xyz/knowledge/index">Back</a></p>
+
 ## Description
 Build and run arduino sketches from the command line.
 

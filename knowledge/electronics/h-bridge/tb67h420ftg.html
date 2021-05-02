@@ -1,68 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-	<meta charset="utf-8">
-	<title>Harvey Bates - TB67H420FTG</title>
-	<meta name="description" content="H-Bridge Motor Driver IC">
-	<meta name="author" content="Harvey Bates">
-	<link rel="stylesheet" href="../../../css/style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/style    s/routeros.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TB67H420FTG (H-Bridge / Motor/TEC Driver)</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../css/knowledge.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
-
 <body>
-
-	<div class="header">
-		<div class="heading"> 
-			<a class="heading" href="https://harveybates.xyz">Harvey Bates.</a>
-		</div> 
-		<div class="navbar">
-			<a href="#about" class="about-tab">About</a>
-			<a href="blog" class="blog-tab">Blog</a>
-			<a href="publications" title="publications" class="publications-tab">Publications</a>
-			<a href="https://harveybates.xyz" class="home-tab">Home</a>
-		</div>
-	</div>
-
-	<div class="card-container">
-		<div class="card">
-			<h2>TB67H420FTG (H-Bridge / Motor/TEC Driver)</h2>
-			<h3>Description</h3>
-			<p>This IC is useful for medium power motor drivers or limited power thermoelectric coolers (peltier modules). It can be configured for duel or single applications with the latter provding almost double the power. Be aware that this module runs HOT so sufficient cooling is needed.</p>
-			<p>For single motor mode, two digital pins are needed. For duel mode, 4 digital pins are needed. A I2C PWM breakout board such as the <a href="https://www.nxp.com/products/power-management/lighting-driver-and-controller-ics/ic-led-controllers/16-channel-12-bit-pwm-fm-plus-ic-bus-led-controller:PCA9685">PCA9685</a> 12-bit, 16-channel IC can be used if more digital pins are needed. This IC can have its I2C address configured to prevent conflictions.</p>
-			<p>Alternative component: <a href="https://www.adafruit.com/product/3190">DRV8871</a>. A single motor driver for up to 3.6 A or 1.8 A continuious with cooling.</p>
-			
-			<h3>Resources</h3>
-			<p>Pololu Website Guide: <a href="https://www.pololu.com/product/2999">TB67H420FTG</a></p>
-			<p><a href="https://youtu.be/LH3bHMQEy7U">Video</a> on connecting motor to Teensy microcontroller.</p>
-			<p>Schematic: <a href="https://www.pololu.com/product/2999#lightbox-picture0J8689">Pololu Schematic</a></p>
-
-			<h3>Setup</h3>
-			<h4>Wiring</h4>
-			<p>Single Motor Wiring Setup</p>
-			<ul>
-				<li>INA1 = a digital pin</li>
-				<li>INA2 = a digital pin</li>
-				<li>PWMA = a digital pin</li>
-				<li>GND = Ground</li>
-			</ul>
-			<p> Do not connect VCC to Teensy as this is a regulated power OUTPUT from the motors input voltage source!</p>
-
-			<ul>
-				<li>A+ and A- = should be connected together via a jumper</li>
-				<li>B+ and B- = should be connected together via a jumper</li>
-				<li>VIN = supply voltage (normally 12 V)</li>
-				<li>HBMode = should be connected to VCC (3.3 or 5 V) via a jumper</li>
-			</ul>
-
-			<h3>Current Limiting</h3>
-			<p>The TB67H420FTG can actively limit the current through the motors by using a fixed-frequency PWM current regulation (current chopping). This carrier board connects voltage dividers to the VREFA and VREFB pins that set the reference voltage to about 3.6 V.</p>
-			<p>In single-channel mode, the default 3.6 V reference voltage results in a nominal single-channel current limit of 9 A. The formula for the current chopping threshold in single-channel mode is Iout=VREF×2.5.</p>
-
-		</div>
-	</div>	
-
+<header id="title-block-header">
+<h1 class="title">TB67H420FTG (H-Bridge / Motor/TEC Driver)</h1>
+</header>
+<p style="text-align: center;">
+<a href="https://harveybates.xyz/">Home</a> - <a href="https://harveybates.xyz/knowledge/index">Back</a>
+</p>
+<h2 id="description">Description</h2>
+<p>This IC is useful for medium power motor drivers or limited power thermoelectric coolers (peltier modules). It can be configured for duel or single applications with the latter provding almost double the power. Be aware that this module runs HOT so sufficient cooling is needed.</p>
+<p>For single motor mode, two digital pins are needed. For duel mode, 4 digital pins are needed. A I2C PWM breakout board such as the PCA9685 12-bit, 16-channel IC can be used if more digital pins are needed. This IC can have its I2C address configured to prevent conflicting addresses.</p>
+<p>Alternative component: DRV8871. A single motor driver for up to 3.6 A or 1.8 A continuous with cooling.</p>
+<h2 id="resources">Resources</h2>
+<p>Pololu Website Guide: <a href="https://www.pololu.com/product/2999">TB67H420FTG</a></p>
+<p><a href="https://www.youtube.com/watch?v=LH3bHMQEy7U">Video</a> on connecting motor to Teensy microcontroller.</p>
+<p><a href="https://www.pololu.com/product/2999#lightbox-picture0J8689">Schematic</a></p>
+<h2 id="setup">Setup</h2>
+<h3 id="wiring">Wiring</h3>
+<p>Single motor:</p>
+<ul>
+<li><p>INA1 = a digital pin</p></li>
+<li><p>INA2 = a digital pin</p></li>
+<li><p>PWMA = a digital pin</p></li>
+<li><p>GND = Ground</p></li>
+</ul>
+<p>Do not connect VCC to Teensy as this is a regulated power OUTPUT from the motors input voltage source!</p>
+<ul>
+<li><p>A+ and A- = should be connected together via a jumper</p></li>
+<li><p>B+ and B- = should be connected together via a jumper</p></li>
+<li><p>VIN = supply voltage (normally 12 V)</p></li>
+<li><p>HBMode = should be connected to VCC (3.3 or 5 V) via a jumper</p></li>
+</ul>
+<h2 id="current-limiting">Current Limiting</h2>
+<p>The TB67H420FTG can actively limit the current through the motors by using a fixed-frequency PWM current regulation (current chopping). This carrier board connects voltage dividers to the VREFA and VREFB pins that set the reference voltage to about 3.6 V.</p>
+<p>In single-channel mode, the default 3.6 V reference voltage results in a nominal single-channel current limit of 9 A. The formula for the current chopping threshold in single-channel mode is Iout=VREF×2.5.</p>
 </body>
-
-
+</html>

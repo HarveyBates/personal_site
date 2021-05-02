@@ -1,10 +1,10 @@
 :root{
-	--color-h1: #344A86;
-	--color-h2: #C2964B;
-	--color-h3: #C25A75;
-	--color-h4: #2e6f95;
-	--color-h5: #0091ad;
-	--color-code-bg: #f8f8f8;
+	--color-h1: #9A031E;
+	--color-h2: #9A031E;
+	--color-h3: #0F4C5C;
+	--color-h4: #0F4C5C;
+	--color-h5: #0F4C5C;
+	--color-code-bg: #f6eeec;
 	--color-links: #407794;
 }
 body {
@@ -20,11 +20,11 @@ body {
 	padding-bottom: 3em;
 }
 pre {
-	border: 1px solid #DDDDDD;
-	border-radius: 1em;
+	border: 3px solid #bad4e1;
+	border-radius: 0.5em;
 	background-color: var(--color-code-bg);
 	color: #1111111;
-	padding: 1.5em;
+	padding: 1em;
 }
 code {
 	font-family: monospace;
@@ -39,30 +39,30 @@ h1, h2, h3, h4, h5 { font-family: verdana;
 	border-bottom: 1px dotted grey;
 }
 h1 {
-	font-size: 130%;
+	font-size: 150%;
 	color: var(--color-h1);
 }
 
 h2 {
 	color: var(--color-h2);
-	font-size: 110%;
+	font-size: 130%;
 }
 
 h3 {
-	padding-left: 1em;
+	padding-left: 2em;
 	font-size: 95%;
 	color: var(--color-h3);
 }
 
 h4 {
-	padding-left: 2em;
+	padding-left: 6em;
 	font-size: 90%;
 	font-style: italic;
 	color: var(--color-h4);
 }
 
 h5 {
-	padding-left: 3em;
+	padding-left: 10em;
 	font-size: 90%;
 	font-style: italic;
 	color: var(--color-h5);
@@ -75,13 +75,6 @@ h1.title {
 	padding-bottom: 0.2em;
 	text-align: center;
 	border: none;
-}
-
-dt code {
-	font-weight: bold;
-}
-dd p {
-	margin-top: 0;
 }
 
 #footer {

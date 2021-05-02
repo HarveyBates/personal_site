@@ -1,3 +1,10 @@
+---
+title: Miscellaneous
+...
+
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+href="https://harveybates.xyz/knowledge/index">Back</a></p>
+
 ## Description
 
 Various bash commands that are useful but don't have a specific order that is worthy of their own page. Also contains useful terminal based programs.

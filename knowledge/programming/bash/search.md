@@ -1,3 +1,10 @@
+---
+title: Searching in the Terminal
+...
+
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+href="https://harveybates.xyz/knowledge/index">Back</a></p>
+
 ## Description
 Commands for searching for/within files and folders in the terminal.
 

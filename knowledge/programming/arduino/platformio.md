@@ -1,3 +1,10 @@
+---
+title: PlatformIO
+...
+
+<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a 
+href="https://harveybates.xyz/knowledge/index">Back</a></p>
+
 ## Description
 Platform IO allows for easy uploading and viewing of microcontroller input and outputs. This information covers the command line interface for PlatformIO.
 
