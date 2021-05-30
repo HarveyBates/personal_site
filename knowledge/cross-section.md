@@ -1,8 +1,6 @@
 ---
 title: Cross-Section of Model
-...
-
-<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a href="https://harveybates.xyz/knowledge/index">Back</a></p>
+---
 
 ## Description
 How to formulate a cross-sectional analysis of a part or assembly in Fusion360.

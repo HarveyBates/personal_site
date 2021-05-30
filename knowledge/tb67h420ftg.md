@@ -1,8 +1,6 @@
 ---
 title: TB67H420FTG (H-Bridge / Motor/TEC Driver)
-...
-
-<p style="text-align: center;"><a href="https://harveybates.xyz/">Home</a> - <a href="https://harveybates.xyz/knowledge/index">Back</a></p>
+---
 
 ## Description
 This IC is useful for medium power motor drivers or limited power thermoelectric coolers (peltier modules). It can be configured for duel or single applications with the latter provding almost double the power. Be aware that this module runs HOT so sufficient cooling is needed.
