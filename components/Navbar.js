@@ -8,9 +8,6 @@ const Navbar = () => {
 				<div className={navStyles.titleName}>
 					<Link href="#">Harvey Bates</Link>
 				</div>
-				<div className={navStyles.companyName}>
-					<Link href="#">HB Scientific</Link>
-				</div>
 				<div className={navStyles.navbar}>
 					<Link href="#">Home</Link>
 					<Link href="#">About</Link>

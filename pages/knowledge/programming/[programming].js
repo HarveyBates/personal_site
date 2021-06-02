@@ -5,7 +5,7 @@ import matter from 'gray-matter'; // YML parser
 import Head from 'next/head';
 import marked from 'marked'; // Markdown to html
 
-const Post = ({htmlString, data}) => {
+const ProgammingPost = ({htmlString, data}) => {
 	return (
 		<div>
 			<Head>
@@ -19,22 +19,22 @@ const Post = ({htmlString, data}) => {
 };
 
 export const getStaticPaths = async () => {
-	const files = fs.readdirSync("knowledge");
+	const files = fs.readdirSync("knowledge/programming");
 	const markdownFiles = files.filter(file => path.extname(file) === ".md");
 	const paths = markdownFiles.map(fileName => ({
 		params: {
-			knowledge: fileName.replace(".md", "")
+			programming: fileName.replace(".md", "")
 		}
 	}));
-	console.log(paths);
+
 	return {
 		paths,
 		fallback: false // Render at build time
 	};
 };
 
-export const getStaticProps = async ({params: {knowledge}}) => {
-	const markdown = fs.readFileSync(path.join('knowledge', knowledge + ".md"), 'utf8');
+export const getStaticProps = async ({params: {programming}}) => {
+	const markdown = fs.readFileSync(path.join('knowledge/programming', programming + ".md"), 'utf8');
 	const parsedMarkdown = matter(markdown);
 	const htmlString = marked(parsedMarkdown.content);
 	return {
@@ -45,5 +45,5 @@ export const getStaticProps = async ({params: {knowledge}}) => {
 	};
 };
 
-export default Post;
+export default ProgammingPost;
 
