@@ -50,7 +50,7 @@ pandoc -s input.md -o output.pdf
 ```
 #### Citations
 Define in ``.bib`` file.
-```bib
+```latex
 @article{name2020,
 	author={Name, LastName},
 	title={Title},
@@ -79,11 +79,11 @@ python3 -m pip install pandoc-fignos --user
 
 #### Use
 Define figure with caption:
-```none
+```markdown
 ![Caption.](image.png){#fig:Name}
 ```
 Reference figure with "Fig" extension:
-```none
+```markdown
 \*@Fig:Name
 ```
 
