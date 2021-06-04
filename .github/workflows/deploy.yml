@@ -14,7 +14,8 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-      - uses: w9jds/firebase-action@master
+      - name: Github Action for Firebase
+        uses: w9jds/firebase-action@v2.0.0
         with:
           args: deploy --only hosting
         env:
