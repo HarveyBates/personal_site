@@ -33,3 +33,10 @@ yarn-error.log*
 
 .DS_Store
 *.swp
+
+# Firebase
+.firebase/hosting.*.cache
+.firebase-debug.*.log
+firebase-error.log*
+firebase-debug.log*
+.firebase/
