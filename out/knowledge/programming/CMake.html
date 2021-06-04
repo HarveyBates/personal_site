@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>CMake Introduction</title><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css"/><meta name="next-head-count" content="4"/><link rel="preload" href="/_next/static/css/a59da0eacbea689829ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a59da0eacbea689829ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/87c8624d19ac042a1b3c.css" as="style"/><link rel="stylesheet" href="/_next/static/css/87c8624d19ac042a1b3c.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework-64eb7138163e04c228e4.js" as="script"/><link rel="preload" href="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" as="script"/><link rel="preload" href="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" as="script"/></head><body><div id="__next"><div><div><div class="Navbar_header__G42YY"><div class="Navbar_titleName__1SzAf"><a href="/knowledge/programming/CMake#">Harvey Bates</a></div><div class="Navbar_navbar__Nhtc0"><a href="/knowledge/programming/CMake#">Home</a><a href="/knowledge/programming/CMake#">About</a><a href="/knowledge/programming/CMake#">Blog</a><a href="/knowledge/programming/CMake#">Knowledge</a><a href="/knowledge/programming/CMake#">Publications</a></div></div></div><div><main><div><div class="Knowledge_page__2flRE"><div><h2 id="description">Description</h2>
+<p>CMake allows for C++ applications to be compiled without entering library, linkers and files manually each time you want to compile your project.</p>
+<h2 id="installation">Installation</h2>
+<p>Main Site: <a href="https://cmake.org/install/">CMake</a></p>
+<h3 id="homebrew-macos--linux">Homebrew (MacOS &amp; Linux)</h3>
+<pre><code class="language-bash">brew install --cask cmake
+</code></pre>
+<h2 id="setup">Setup</h2>
+<p>Create a file called CMakeLists.txt in your working directory</p>
+<h3 id="define-operating-system">Define Operating System</h3>
+<pre><code class="language-cmake">if(UNIX AND NOT APPLE)
+    ... # Linux
+elseif(APPLE)
+    ... # MacOS
+else()
+    ... # Windows
+endif()
+</code></pre>
+<h3 id="define-minimum-version">Define Minimum Version</h3>
+<p>Documentation: <a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html">cmake_minimum_required</a></p>
+<pre><code class="language-cmake">cmake_minimum_required(VERSION &quot;3.19.2&quot;)
+# Just use current version you are using
+</code></pre>
+<h3 id="define-project-name">Define Project Name</h3>
+<pre><code class="language-cmake">project(&quot;project_name&quot;)
+</code></pre>
+<h3 id="locate-installed-package">Locate Installed Package</h3>
+<pre><code class="language-cmake">find_package(*package_name* REQUIRED)
+</code></pre>
+<h3 id="set-source-directory">Set Source Directory</h3>
+<pre><code class="language-cmake">set(NAME_SRC
+    src/main.cpp
+    src/example.cpp)
+</code></pre>
+<h3 id="set-include-directory">Set Include Directory</h3>
+<p>This is where all your C++ header (.h or .hpp) files will be located</p>
+<pre><code class="language-cmake">set(NAME_H
+    include/main.h
+    include/example.h)    
+</code></pre>
+<h3 id="set-executable-path">Set Executable Path</h3>
+<p>This is where an executable (.exe) file will be generated.</p>
+<pre><code class="language-cmake">set(EXE_PATH ${CMAKE_BINARY_DIR}/bin)
+# CMAKE_BINARY_DIR represents the directroy where your CMakeLists.txt file is located
+</code></pre>
+<h3 id="include-directories">Include Directories</h3>
+<pre><code class="language-cmake">include_directories(${CMAKE_SOURCE_DIR}/include ...)
+</code></pre>
+<h3 id="add-executable">Add Executable</h3>
+<p>Add components to create an executable.</p>
+<pre><code class="language-cmake">add_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})
+</code></pre>
+<h3 id="add-compile-features">Add Compile Features</h3>
+<p>Add custom compile features such as the C++ version to be used.</p>
+<pre><code class="language-cmake">target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
+</code></pre>
+<h3 id="link-libraries">Link Libraries</h3>
+<p>Link your project to external libraries.</p>
+<pre><code class="language-cmake">target_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)
+</code></pre>
+<h3 id="target-include-directories">Target Include Directories</h3>
+<p>Target - links to specific project</p>
+<p>Normal - links globally</p>
+<pre><code class="language-cmake">target_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)
+</code></pre>
+<h2 id="overall-structure">Overall Structure</h2>
+<p>See the <a href="https://github.com/HarveyBates/Phenobottle/blob/master/UserInterface/web_application/server/CMakeLists.txt">phenobottle&#39;s CMake file</a> for further information.</p>
+<pre><code class="language-cmake">cmake_minimum_required(VERSION &quot;3.19.2&quot;)
+
+project(&quot;project_name&quot;)
+
+find_package(*package_name* REQUIRED)
+
+set(NAME_SRC
+    src/main.cpp
+    src/example.cpp)
+
+set(NAME_H
+    include/main.h
+    include/example.h)
+
+set(EXE_PATH ${CMAKE_BINARY_DIR}/bin)
+
+include_directories(${CMAKE_SOURCE_DIR}/include ...)
+
+add_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)
+
+target_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)
+</code></pre>
+</div></div></div></main></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"htmlString":"\u003ch2 id=\"description\"\u003eDescription\u003c/h2\u003e\n\u003cp\u003eCMake allows for C++ applications to be compiled without entering library, linkers and files manually each time you want to compile your project.\u003c/p\u003e\n\u003ch2 id=\"installation\"\u003eInstallation\u003c/h2\u003e\n\u003cp\u003eMain Site: \u003ca href=\"https://cmake.org/install/\"\u003eCMake\u003c/a\u003e\u003c/p\u003e\n\u003ch3 id=\"homebrew-macos--linux\"\u003eHomebrew (MacOS \u0026amp; Linux)\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ebrew install --cask cmake\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"setup\"\u003eSetup\u003c/h2\u003e\n\u003cp\u003eCreate a file called CMakeLists.txt in your working directory\u003c/p\u003e\n\u003ch3 id=\"define-operating-system\"\u003eDefine Operating System\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003eif(UNIX AND NOT APPLE)\n    ... # Linux\nelseif(APPLE)\n    ... # MacOS\nelse()\n    ... # Windows\nendif()\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"define-minimum-version\"\u003eDefine Minimum Version\u003c/h3\u003e\n\u003cp\u003eDocumentation: \u003ca href=\"https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html\"\u003ecmake_minimum_required\u003c/a\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003ecmake_minimum_required(VERSION \u0026quot;3.19.2\u0026quot;)\n# Just use current version you are using\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"define-project-name\"\u003eDefine Project Name\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003eproject(\u0026quot;project_name\u0026quot;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"locate-installed-package\"\u003eLocate Installed Package\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003efind_package(*package_name* REQUIRED)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"set-source-directory\"\u003eSet Source Directory\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003eset(NAME_SRC\n    src/main.cpp\n    src/example.cpp)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"set-include-directory\"\u003eSet Include Directory\u003c/h3\u003e\n\u003cp\u003eThis is where all your C++ header (.h or .hpp) files will be located\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003eset(NAME_H\n    include/main.h\n    include/example.h)    \n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"set-executable-path\"\u003eSet Executable Path\u003c/h3\u003e\n\u003cp\u003eThis is where an executable (.exe) file will be generated.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003eset(EXE_PATH ${CMAKE_BINARY_DIR}/bin)\n# CMAKE_BINARY_DIR represents the directroy where your CMakeLists.txt file is located\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"include-directories\"\u003eInclude Directories\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003einclude_directories(${CMAKE_SOURCE_DIR}/include ...)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"add-executable\"\u003eAdd Executable\u003c/h3\u003e\n\u003cp\u003eAdd components to create an executable.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003eadd_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"add-compile-features\"\u003eAdd Compile Features\u003c/h3\u003e\n\u003cp\u003eAdd custom compile features such as the C++ version to be used.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003etarget_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"link-libraries\"\u003eLink Libraries\u003c/h3\u003e\n\u003cp\u003eLink your project to external libraries.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003etarget_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"target-include-directories\"\u003eTarget Include Directories\u003c/h3\u003e\n\u003cp\u003eTarget - links to specific project\u003c/p\u003e\n\u003cp\u003eNormal - links globally\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003etarget_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"overall-structure\"\u003eOverall Structure\u003c/h2\u003e\n\u003cp\u003eSee the \u003ca href=\"https://github.com/HarveyBates/Phenobottle/blob/master/UserInterface/web_application/server/CMakeLists.txt\"\u003ephenobottle\u0026#39;s CMake file\u003c/a\u003e for further information.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003ecmake_minimum_required(VERSION \u0026quot;3.19.2\u0026quot;)\n\nproject(\u0026quot;project_name\u0026quot;)\n\nfind_package(*package_name* REQUIRED)\n\nset(NAME_SRC\n    src/main.cpp\n    src/example.cpp)\n\nset(NAME_H\n    include/main.h\n    include/example.h)\n\nset(EXE_PATH ${CMAKE_BINARY_DIR}/bin)\n\ninclude_directories(${CMAKE_SOURCE_DIR}/include ...)\n\nadd_executable(${PROJECT_NAME} ${NAME_SRC} ${NAME_H})\n\ntarget_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)\n\ntarget_link_libraries(${PROJECT_NAME} PRIVATE *library_name* ...)\n\ntarget_include_directories(${PROJECT_NAME} PRIVATE *library_name* ...)\n\u003c/code\u003e\u003c/pre\u003e\n","data":{"title":"CMake Introduction"}},"__N_SSG":true},"page":"/knowledge/programming/[programming]","query":{"programming":"CMake"},"buildId":"-ivy6eWUB8p0P6rt7VF27","isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-eef578260fd80f8fff94.js"></script><script src="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" async=""></script><script src="/_next/static/chunks/framework-64eb7138163e04c228e4.js" async=""></script><script src="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" async=""></script><script src="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" async=""></script><script src="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" async=""></script><script src="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_buildManifest.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_ssgManifest.js" async=""></script></body></html>

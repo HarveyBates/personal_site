@@ -1,0 +1,71 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>Useful Pandoc Commands</title><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css"/><meta name="next-head-count" content="4"/><link rel="preload" href="/_next/static/css/a59da0eacbea689829ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a59da0eacbea689829ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/87c8624d19ac042a1b3c.css" as="style"/><link rel="stylesheet" href="/_next/static/css/87c8624d19ac042a1b3c.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework-64eb7138163e04c228e4.js" as="script"/><link rel="preload" href="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" as="script"/><link rel="preload" href="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" as="script"/></head><body><div id="__next"><div><div><div class="Navbar_header__G42YY"><div class="Navbar_titleName__1SzAf"><a href="/knowledge/programming/Pandoc#">Harvey Bates</a></div><div class="Navbar_navbar__Nhtc0"><a href="/knowledge/programming/Pandoc#">Home</a><a href="/knowledge/programming/Pandoc#">About</a><a href="/knowledge/programming/Pandoc#">Blog</a><a href="/knowledge/programming/Pandoc#">Knowledge</a><a href="/knowledge/programming/Pandoc#">Publications</a></div></div></div><div><main><div><div class="Knowledge_page__2flRE"><div><h2 id="description">Description</h2>
+<p>Useful for converting files from one markup to another (e.g. .tex -&gt; html).</p>
+<h2 id="setup">Setup</h2>
+<p>Direct: <a href="https://pandoc.org/installing.html">Install Pandoc</a></p>
+<p>Homebrew (MacOS &amp; Linux):</p>
+<pre><code class="language-bash">brew install pandoc
+</code></pre>
+<h2 id="examples">Examples</h2>
+<h3 id="metadata">Metadata</h3>
+<p>Insert at top of <code>.md</code> file to give some metadata in the form of a <code>.yml</code> file (without actually creating a <code>.yml</code> file).</p>
+<pre><code class="language-yml">---
+title: TITLE
+author: Author
+header: Header
+footer: Footer
+geometry: margin=1in
+abstract: Enter abstract 
+...
+</code></pre>
+<h3 id="links">Links</h3>
+<p>Add some links to the header.</p>
+<pre><code class="language-html">&lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;https://harveybates.xyz/&quot;&gt;Home&lt;/a&gt; - &lt;a 
+href=&quot;https://harveybates.xyz/knowledge/index&quot;&gt;Back&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<h3 id="markdown-to-html">Markdown to html</h3>
+<pre><code class="language-bash">pandoc -s input.md -c style.css -o output.html --metadata=&quot;Title&quot;
+</code></pre>
+<h3 id="latex-to-markdown">LaTeX to markdown</h3>
+<pre><code class="language-bash">pandoc -s input.tex -o output.text
+</code></pre>
+<h3 id="markdown-to-pdf">Markdown to pdf</h3>
+<pre><code class="language-bash">pandoc -s input.md -o output.pdf
+</code></pre>
+<h4 id="citations">Citations</h4>
+<p>Define in <code>.bib</code> file.</p>
+<pre><code class="language-latex">@article{name2020,
+    author={Name, LastName},
+    title={Title},
+    journal={Journal},
+    year={2020},
+}
+</code></pre>
+<p>Define in text.</p>
+<pre><code class="language-md">[@name2020]
+</code></pre>
+<p>Compile in terminal.</p>
+<pre><code class="language-bash">pandoc -s input.md --bibliography=ref.bib --citeproc -o output.pdf
+</code></pre>
+<h3 id="figure-numbering">Figure numbering</h3>
+<p>Using <a href="https://github.com/tomduck/pandoc-fignos">pandoc-fignos</a>.</p>
+<h4 id="install">Install</h4>
+<pre><code class="language-bash">python3 -m pip install pandoc-fignos --user
+</code></pre>
+<h4 id="use">Use</h4>
+<p>Define figure with caption:</p>
+<pre><code class="language-markdown">![Caption.](image.png){#fig:Name}
+</code></pre>
+<p>Reference figure with &quot;Fig&quot; extension:</p>
+<pre><code class="language-markdown">\*@Fig:Name
+</code></pre>
+<p>When compiling use the following tag.</p>
+<pre><code class="language-bash">--filter pandoc-fignos
+</code></pre>
+<h3 id="slide-show-beamer">Slide show (beamer)</h3>
+<pre><code class="language-bash">pandoc -t beamer input.md -o output.pdf
+pandoc -t beamer input.tex -o output.pdf
+</code></pre>
+<h3 id="other">Other</h3>
+<p>Useful commands can be found on the pandoc site.
+<a href="https://pandoc.org/demos.html">https://pandoc.org/demos.html</a></p>
+</div></div></div></main></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"htmlString":"\u003ch2 id=\"description\"\u003eDescription\u003c/h2\u003e\n\u003cp\u003eUseful for converting files from one markup to another (e.g. .tex -\u0026gt; html).\u003c/p\u003e\n\u003ch2 id=\"setup\"\u003eSetup\u003c/h2\u003e\n\u003cp\u003eDirect: \u003ca href=\"https://pandoc.org/installing.html\"\u003eInstall Pandoc\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eHomebrew (MacOS \u0026amp; Linux):\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ebrew install pandoc\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"examples\"\u003eExamples\u003c/h2\u003e\n\u003ch3 id=\"metadata\"\u003eMetadata\u003c/h3\u003e\n\u003cp\u003eInsert at top of \u003ccode\u003e.md\u003c/code\u003e file to give some metadata in the form of a \u003ccode\u003e.yml\u003c/code\u003e file (without actually creating a \u003ccode\u003e.yml\u003c/code\u003e file).\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-yml\"\u003e---\ntitle: TITLE\nauthor: Author\nheader: Header\nfooter: Footer\ngeometry: margin=1in\nabstract: Enter abstract \n...\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"links\"\u003eLinks\u003c/h3\u003e\n\u003cp\u003eAdd some links to the header.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-html\"\u003e\u0026lt;p style=\u0026quot;text-align: center;\u0026quot;\u0026gt;\u0026lt;a href=\u0026quot;https://harveybates.xyz/\u0026quot;\u0026gt;Home\u0026lt;/a\u0026gt; - \u0026lt;a \nhref=\u0026quot;https://harveybates.xyz/knowledge/index\u0026quot;\u0026gt;Back\u0026lt;/a\u0026gt;\u0026lt;/p\u0026gt;\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"markdown-to-html\"\u003eMarkdown to html\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epandoc -s input.md -c style.css -o output.html --metadata=\u0026quot;Title\u0026quot;\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"latex-to-markdown\"\u003eLaTeX to markdown\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epandoc -s input.tex -o output.text\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"markdown-to-pdf\"\u003eMarkdown to pdf\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epandoc -s input.md -o output.pdf\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4 id=\"citations\"\u003eCitations\u003c/h4\u003e\n\u003cp\u003eDefine in \u003ccode\u003e.bib\u003c/code\u003e file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-latex\"\u003e@article{name2020,\n    author={Name, LastName},\n    title={Title},\n    journal={Journal},\n    year={2020},\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eDefine in text.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-md\"\u003e[@name2020]\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eCompile in terminal.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epandoc -s input.md --bibliography=ref.bib --citeproc -o output.pdf\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"figure-numbering\"\u003eFigure numbering\u003c/h3\u003e\n\u003cp\u003eUsing \u003ca href=\"https://github.com/tomduck/pandoc-fignos\"\u003epandoc-fignos\u003c/a\u003e.\u003c/p\u003e\n\u003ch4 id=\"install\"\u003eInstall\u003c/h4\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epython3 -m pip install pandoc-fignos --user\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4 id=\"use\"\u003eUse\u003c/h4\u003e\n\u003cp\u003eDefine figure with caption:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-markdown\"\u003e![Caption.](image.png){#fig:Name}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eReference figure with \u0026quot;Fig\u0026quot; extension:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-markdown\"\u003e\\*@Fig:Name\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eWhen compiling use the following tag.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003e--filter pandoc-fignos\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"slide-show-beamer\"\u003eSlide show (beamer)\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epandoc -t beamer input.md -o output.pdf\npandoc -t beamer input.tex -o output.pdf\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"other\"\u003eOther\u003c/h3\u003e\n\u003cp\u003eUseful commands can be found on the pandoc site.\n\u003ca href=\"https://pandoc.org/demos.html\"\u003ehttps://pandoc.org/demos.html\u003c/a\u003e\u003c/p\u003e\n","data":{"title":"Useful Pandoc Commands"}},"__N_SSG":true},"page":"/knowledge/programming/[programming]","query":{"programming":"Pandoc"},"buildId":"-ivy6eWUB8p0P6rt7VF27","isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-eef578260fd80f8fff94.js"></script><script src="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" async=""></script><script src="/_next/static/chunks/framework-64eb7138163e04c228e4.js" async=""></script><script src="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" async=""></script><script src="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" async=""></script><script src="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" async=""></script><script src="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_buildManifest.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_ssgManifest.js" async=""></script></body></html>

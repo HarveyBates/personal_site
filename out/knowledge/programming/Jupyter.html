@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>Data Analysis with Jupyter Notebooks</title><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css"/><meta name="next-head-count" content="4"/><link rel="preload" href="/_next/static/css/a59da0eacbea689829ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a59da0eacbea689829ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/87c8624d19ac042a1b3c.css" as="style"/><link rel="stylesheet" href="/_next/static/css/87c8624d19ac042a1b3c.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework-64eb7138163e04c228e4.js" as="script"/><link rel="preload" href="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" as="script"/><link rel="preload" href="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" as="script"/></head><body><div id="__next"><div><div><div class="Navbar_header__G42YY"><div class="Navbar_titleName__1SzAf"><a href="/knowledge/programming/Jupyter#">Harvey Bates</a></div><div class="Navbar_navbar__Nhtc0"><a href="/knowledge/programming/Jupyter#">Home</a><a href="/knowledge/programming/Jupyter#">About</a><a href="/knowledge/programming/Jupyter#">Blog</a><a href="/knowledge/programming/Jupyter#">Knowledge</a><a href="/knowledge/programming/Jupyter#">Publications</a></div></div></div><div><main><div><div class="Knowledge_page__2flRE"><div><h2 id="description">Description</h2>
+<p>Useful commands for programming within Jupyter Notebook.</p>
+<h2 id="data-preparation">Data Preparation</h2>
+<h3 id="useful-imports">Useful imports</h3>
+<p>Data sorting, visualisation, basic statistics and line fitting.</p>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import matplotlib.ticker as mticker
+import seaborn as sns
+import pandas as pd
+import numpy as np
+from scipy.optimize import curve_fit
+from scipy import stats
+from datetime import datetime
+</code></pre>
+<h3 id="create-dataframe-pandas">Create dataframe (pandas)</h3>
+<p>Using <code>.csv</code> files.</p>
+<pre><code class="language-python">dataframe = pd.read_csv(&quot;filename.csv&quot;) # Basic loading
+dataframe = pd.read_csv(&quot;filename.csv&quot;).dropna() # Remove null values
+dataframe = pd.read_csv(&quot;filename.csv&quot;, delimiter=&#39;;&#39;) # Define seperator
+</code></pre>
+<p>Using <code>.xlsx</code> files.</p>
+<pre><code class="language-python">dataframe = pd.read_excel(&quot;filename.csv&quot;) # Basic loading
+dataframe = pd.read_csv(&quot;filename.csv&quot;, sheet_name=&quot;name&quot;) # Define sheet name
+</code></pre>
+<h2 id="working-with-dates">Working with Dates</h2>
+<h3 id="converting">Converting</h3>
+<p>Convert pandas dataframe column values to datetime.</p>
+<pre><code class="language-python">dataFrame[&quot;timestamps&quot;] = pd.to_datetime(dataFrame[&quot;timestamps&quot;])
+</code></pre>
+<p>Alternative for array data.</p>
+<pre><code class="language-python">dfTimeStamps = [datetime.strptime(time, &quot;%Y-%m-%d %H:%M:%S&quot;) for time in dataFrame[&quot;timestamps&quot;]]
+# Replace formatted string with your time stamp structure
+</code></pre>
+<h3 id="indexing">Indexing</h3>
+<p>Get dataframe values between particular dates.</p>
+<pre><code class="language-python">range = dataFrame[dataFrame[&quot;timestamps&quot;].between(&quot;DD-MM-YYYY HH:MM:SS&quot;, &quot;DD-MM-YYYY HH:MM:SS&quot;)]
+</code></pre>
+<h3 id="aligning">Aligning</h3>
+<p>Align date times from two separate dataframes. Useful for analysing data from separate sources.</p>
+<pre><code class="language-python"># May have to remove minute and second values if they don&#39;t match
+df1[&quot;matching_column_name&quot;] = df1[&quot;matching_column_name&quot;].apply(lambda t: t.replace(minute=0, second=0))
+df2[&quot;matching_column_name&quot;] = df2[&quot;matching_column_name&quot;].apply(lambda t: t.replace(minute=0, second=0))
+
+mergedDataFrame = pd.merge_asof(df1, df2, on=&quot;matching_column_name&quot;) # This will drop any values that don&#39;t match
+</code></pre>
+<h2 id="plotting-data">Plotting Data</h2>
+<h3 id="subplots">Subplots</h3>
+<pre><code class="language-python">fig, ax = plt.subplots(1, 1, figsize=(8,8)) # Single column
+fig, (ax, ax1) = plt.subplots(1, 2, figsize=(8, 8)) # Single column multiple plots
+fig, [[ax, ax1], [ax2, ax3]] = plt.suplots(2, 2) # Multi-row multi-column 
+</code></pre>
+<h3 id="basic-settings">Basic Settings</h3>
+<pre><code class="language-python">ax.set_ylabel(&quot;LABEL&quot;)
+ax.set_xlabel(&quot;LABEL&quot;)
+ax.grid(color=&quot;lightgrey&quot;)
+ax.set_ylim(lower, upper)
+ax.set_xlim(lower, upper)
+ax.legend(loc=&quot;upper right&quot;)
+</code></pre>
+<h3 id="dates">Dates</h3>
+<pre><code class="language-python">ax.set_xlim([datetime.date(YYYY, MM, DD), datetime.date(YYYY, MM, DD)])
+ax.xaxis.set_major_locator(mdates.DayLocator(interval=n))
+ax.xaxis.set_major_locator(mdates.MonthLocator(interval=n))
+plt.setp(ax.get_xticklabels(), rotation=30, ha=&quot;right, rotation_mode=&quot;anchor&quot;)
+</code></pre>
+<h3 id="text-and-arrows">Text and Arrows</h3>
+<pre><code class="language-python">ax.text(0.05, 0.95, &quot;TEXT&quot;, transform=ax.transAxes, fontsize=16, va=&#39;top&#39;)
+ax.annotate(&#39;TEXT&#39;, xy=(0, 0), xytext=(0, 0),
+            arrowprops=dict(facecolor=&#39;black&#39;, shrink=0.05))
+</code></pre>
+<h3 id="exporting-and-displaying">Exporting and Displaying</h3>
+<pre><code class="language-python">plt.tight_layout() # Use this or bbox_inches
+plt.savefig(&quot;name.png&quot;, dpi=300, bbox_inches=&#39;tight&#39;)
+plt.show()
+</code></pre>
+</div></div></div></main></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"htmlString":"\u003ch2 id=\"description\"\u003eDescription\u003c/h2\u003e\n\u003cp\u003eUseful commands for programming within Jupyter Notebook.\u003c/p\u003e\n\u003ch2 id=\"data-preparation\"\u003eData Preparation\u003c/h2\u003e\n\u003ch3 id=\"useful-imports\"\u003eUseful imports\u003c/h3\u003e\n\u003cp\u003eData sorting, visualisation, basic statistics and line fitting.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003eimport matplotlib.pyplot as plt\nimport matplotlib.dates as mdates\nimport matplotlib.ticker as mticker\nimport seaborn as sns\nimport pandas as pd\nimport numpy as np\nfrom scipy.optimize import curve_fit\nfrom scipy import stats\nfrom datetime import datetime\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"create-dataframe-pandas\"\u003eCreate dataframe (pandas)\u003c/h3\u003e\n\u003cp\u003eUsing \u003ccode\u003e.csv\u003c/code\u003e files.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003edataframe = pd.read_csv(\u0026quot;filename.csv\u0026quot;) # Basic loading\ndataframe = pd.read_csv(\u0026quot;filename.csv\u0026quot;).dropna() # Remove null values\ndataframe = pd.read_csv(\u0026quot;filename.csv\u0026quot;, delimiter=\u0026#39;;\u0026#39;) # Define seperator\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eUsing \u003ccode\u003e.xlsx\u003c/code\u003e files.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003edataframe = pd.read_excel(\u0026quot;filename.csv\u0026quot;) # Basic loading\ndataframe = pd.read_csv(\u0026quot;filename.csv\u0026quot;, sheet_name=\u0026quot;name\u0026quot;) # Define sheet name\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"working-with-dates\"\u003eWorking with Dates\u003c/h2\u003e\n\u003ch3 id=\"converting\"\u003eConverting\u003c/h3\u003e\n\u003cp\u003eConvert pandas dataframe column values to datetime.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003edataFrame[\u0026quot;timestamps\u0026quot;] = pd.to_datetime(dataFrame[\u0026quot;timestamps\u0026quot;])\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eAlternative for array data.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003edfTimeStamps = [datetime.strptime(time, \u0026quot;%Y-%m-%d %H:%M:%S\u0026quot;) for time in dataFrame[\u0026quot;timestamps\u0026quot;]]\n# Replace formatted string with your time stamp structure\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"indexing\"\u003eIndexing\u003c/h3\u003e\n\u003cp\u003eGet dataframe values between particular dates.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003erange = dataFrame[dataFrame[\u0026quot;timestamps\u0026quot;].between(\u0026quot;DD-MM-YYYY HH:MM:SS\u0026quot;, \u0026quot;DD-MM-YYYY HH:MM:SS\u0026quot;)]\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"aligning\"\u003eAligning\u003c/h3\u003e\n\u003cp\u003eAlign date times from two separate dataframes. Useful for analysing data from separate sources.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003e# May have to remove minute and second values if they don\u0026#39;t match\ndf1[\u0026quot;matching_column_name\u0026quot;] = df1[\u0026quot;matching_column_name\u0026quot;].apply(lambda t: t.replace(minute=0, second=0))\ndf2[\u0026quot;matching_column_name\u0026quot;] = df2[\u0026quot;matching_column_name\u0026quot;].apply(lambda t: t.replace(minute=0, second=0))\n\nmergedDataFrame = pd.merge_asof(df1, df2, on=\u0026quot;matching_column_name\u0026quot;) # This will drop any values that don\u0026#39;t match\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"plotting-data\"\u003ePlotting Data\u003c/h2\u003e\n\u003ch3 id=\"subplots\"\u003eSubplots\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003efig, ax = plt.subplots(1, 1, figsize=(8,8)) # Single column\nfig, (ax, ax1) = plt.subplots(1, 2, figsize=(8, 8)) # Single column multiple plots\nfig, [[ax, ax1], [ax2, ax3]] = plt.suplots(2, 2) # Multi-row multi-column \n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"basic-settings\"\u003eBasic Settings\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003eax.set_ylabel(\u0026quot;LABEL\u0026quot;)\nax.set_xlabel(\u0026quot;LABEL\u0026quot;)\nax.grid(color=\u0026quot;lightgrey\u0026quot;)\nax.set_ylim(lower, upper)\nax.set_xlim(lower, upper)\nax.legend(loc=\u0026quot;upper right\u0026quot;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"dates\"\u003eDates\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003eax.set_xlim([datetime.date(YYYY, MM, DD), datetime.date(YYYY, MM, DD)])\nax.xaxis.set_major_locator(mdates.DayLocator(interval=n))\nax.xaxis.set_major_locator(mdates.MonthLocator(interval=n))\nplt.setp(ax.get_xticklabels(), rotation=30, ha=\u0026quot;right, rotation_mode=\u0026quot;anchor\u0026quot;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"text-and-arrows\"\u003eText and Arrows\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003eax.text(0.05, 0.95, \u0026quot;TEXT\u0026quot;, transform=ax.transAxes, fontsize=16, va=\u0026#39;top\u0026#39;)\nax.annotate(\u0026#39;TEXT\u0026#39;, xy=(0, 0), xytext=(0, 0),\n            arrowprops=dict(facecolor=\u0026#39;black\u0026#39;, shrink=0.05))\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"exporting-and-displaying\"\u003eExporting and Displaying\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-python\"\u003eplt.tight_layout() # Use this or bbox_inches\nplt.savefig(\u0026quot;name.png\u0026quot;, dpi=300, bbox_inches=\u0026#39;tight\u0026#39;)\nplt.show()\n\u003c/code\u003e\u003c/pre\u003e\n","data":{"title":"Data Analysis with Jupyter Notebooks"}},"__N_SSG":true},"page":"/knowledge/programming/[programming]","query":{"programming":"Jupyter"},"buildId":"-ivy6eWUB8p0P6rt7VF27","isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-eef578260fd80f8fff94.js"></script><script src="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" async=""></script><script src="/_next/static/chunks/framework-64eb7138163e04c228e4.js" async=""></script><script src="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" async=""></script><script src="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" async=""></script><script src="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" async=""></script><script src="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_buildManifest.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_ssgManifest.js" async=""></script></body></html>

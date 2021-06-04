@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>Using JSON with C++</title><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css"/><meta name="next-head-count" content="4"/><link rel="preload" href="/_next/static/css/a59da0eacbea689829ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a59da0eacbea689829ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/87c8624d19ac042a1b3c.css" as="style"/><link rel="stylesheet" href="/_next/static/css/87c8624d19ac042a1b3c.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework-64eb7138163e04c228e4.js" as="script"/><link rel="preload" href="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" as="script"/><link rel="preload" href="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" as="script"/></head><body><div id="__next"><div><div><div class="Navbar_header__G42YY"><div class="Navbar_titleName__1SzAf"><a href="/knowledge/programming/C%2B%2B%20JSON#">Harvey Bates</a></div><div class="Navbar_navbar__Nhtc0"><a href="/knowledge/programming/C%2B%2B%20JSON#">Home</a><a href="/knowledge/programming/C%2B%2B%20JSON#">About</a><a href="/knowledge/programming/C%2B%2B%20JSON#">Blog</a><a href="/knowledge/programming/C%2B%2B%20JSON#">Knowledge</a><a href="/knowledge/programming/C%2B%2B%20JSON#">Publications</a></div></div></div><div><main><div><div class="Knowledge_page__2flRE"><div><h2 id="description">Description</h2>
+<p>JSON formatted data is a great asset for sending and receiving formatted information. In C++ the nlohmann library provides an easy way to create and display JSON formatted data.</p>
+<p>Documentation: <a href="https://github.com/nlohmann/json">https://github.com/nlohmann/json</a></p>
+<h2 id="installation">Installation</h2>
+<p>Homebrew (MacOS &amp; Linux)</p>
+<pre><code class="language-bash">brew install nlohmann-json
+</code></pre>
+<h2 id="linking">Linking</h2>
+<p>Link with CMakeLists.txt (CMake):</p>
+<pre><code class="language-cmake">find_package(nlohmann_json 3.2.0 REQUIRED)
+target_link_libraries(foo PRIVATE nlohmann_json::nlohmann_json)
+</code></pre>
+<h3 id="cpm-make-package-manager">CPM-Make (Package manager):</h3>
+<p>Check in releases for the latest version.</p>
+<p>You will need the URL specific to that release version and the SHA256 key.</p>
+<p>Only get the include folder as we don&#39;t want to download all the test examples.</p>
+<pre><code class="language-cmake">CPMAddPackage(
+    NAME nlohmann_json
+    VERSION 3.9.0
+    # Just get the latest (3.9.0) version, and only the include folder as the rep is big
+    URL https://github.com/nlohmann/json/releases/download/v3.9.0/include.zip
+    URL_HASH SHA256=5b9b819aed31626aefe2eace23498cafafc1691890556cd36d2a8002f6905009
+)
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="initialisation">Initialisation</h3>
+<pre><code class="language-cpp">#include &quot;nlohmann/json.hpp&quot;
+using json = nlohmann::json;
+</code></pre>
+<h3 id="construct-json-class">Construct JSON Class</h3>
+<pre><code class="language-cpp">json j;
+</code></pre>
+<h3 id="add-values">Add values</h3>
+<pre><code class="language-cpp">j[&quot;value_name&quot;] = &quot;value&quot;; // Single value
+j[&quot;value_name1&quot;][&quot;value_name2&quot;] = &quot;value&quot;; // Nested value
+</code></pre>
+<h3 id="convert-string-to-json-object">Convert string to JSON object</h3>
+<pre><code class="language-cpp">std::string input = &quot;{&quot;happy&quot;:true,&quot;pi&quot;:3.141}&quot;;
+j = input;
+std::cout &lt;&lt; j.dump(4) &lt;&lt; std::endl;
+</code></pre>
+<h3 id="print-formatted-json-object">Print formatted JSON object</h3>
+<pre><code class="language-cpp">int n = 4;
+// n represents an int for the number of spaces to indent
+std::cout &lt;&lt; j.dump(n) &lt;&lt; std::endl;
+</code></pre>
+<h3 id="example-output">Example output</h3>
+<pre><code class="language-json">{
+    &quot;value_name&quot;: &quot;value&quot;, 
+    &quot;value_name1&quot; {
+        &quot;value_name2&quot;: &quot;value&quot;
+    }
+}
+</code></pre>
+</div></div></div></main></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"htmlString":"\u003ch2 id=\"description\"\u003eDescription\u003c/h2\u003e\n\u003cp\u003eJSON formatted data is a great asset for sending and receiving formatted information. In C++ the nlohmann library provides an easy way to create and display JSON formatted data.\u003c/p\u003e\n\u003cp\u003eDocumentation: \u003ca href=\"https://github.com/nlohmann/json\"\u003ehttps://github.com/nlohmann/json\u003c/a\u003e\u003c/p\u003e\n\u003ch2 id=\"installation\"\u003eInstallation\u003c/h2\u003e\n\u003cp\u003eHomebrew (MacOS \u0026amp; Linux)\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ebrew install nlohmann-json\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"linking\"\u003eLinking\u003c/h2\u003e\n\u003cp\u003eLink with CMakeLists.txt (CMake):\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003efind_package(nlohmann_json 3.2.0 REQUIRED)\ntarget_link_libraries(foo PRIVATE nlohmann_json::nlohmann_json)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"cpm-make-package-manager\"\u003eCPM-Make (Package manager):\u003c/h3\u003e\n\u003cp\u003eCheck in releases for the latest version.\u003c/p\u003e\n\u003cp\u003eYou will need the URL specific to that release version and the SHA256 key.\u003c/p\u003e\n\u003cp\u003eOnly get the include folder as we don\u0026#39;t want to download all the test examples.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-cmake\"\u003eCPMAddPackage(\n    NAME nlohmann_json\n    VERSION 3.9.0\n    # Just get the latest (3.9.0) version, and only the include folder as the rep is big\n    URL https://github.com/nlohmann/json/releases/download/v3.9.0/include.zip\n    URL_HASH SHA256=5b9b819aed31626aefe2eace23498cafafc1691890556cd36d2a8002f6905009\n)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"usage\"\u003eUsage\u003c/h2\u003e\n\u003ch3 id=\"initialisation\"\u003eInitialisation\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cpp\"\u003e#include \u0026quot;nlohmann/json.hpp\u0026quot;\nusing json = nlohmann::json;\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"construct-json-class\"\u003eConstruct JSON Class\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cpp\"\u003ejson j;\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"add-values\"\u003eAdd values\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cpp\"\u003ej[\u0026quot;value_name\u0026quot;] = \u0026quot;value\u0026quot;; // Single value\nj[\u0026quot;value_name1\u0026quot;][\u0026quot;value_name2\u0026quot;] = \u0026quot;value\u0026quot;; // Nested value\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"convert-string-to-json-object\"\u003eConvert string to JSON object\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cpp\"\u003estd::string input = \u0026quot;{\u0026quot;happy\u0026quot;:true,\u0026quot;pi\u0026quot;:3.141}\u0026quot;;\nj = input;\nstd::cout \u0026lt;\u0026lt; j.dump(4) \u0026lt;\u0026lt; std::endl;\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"print-formatted-json-object\"\u003ePrint formatted JSON object\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-cpp\"\u003eint n = 4;\n// n represents an int for the number of spaces to indent\nstd::cout \u0026lt;\u0026lt; j.dump(n) \u0026lt;\u0026lt; std::endl;\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"example-output\"\u003eExample output\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n    \u0026quot;value_name\u0026quot;: \u0026quot;value\u0026quot;, \n    \u0026quot;value_name1\u0026quot; {\n        \u0026quot;value_name2\u0026quot;: \u0026quot;value\u0026quot;\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n","data":{"title":"Using JSON with C++"}},"__N_SSG":true},"page":"/knowledge/programming/[programming]","query":{"programming":"C++ JSON"},"buildId":"-ivy6eWUB8p0P6rt7VF27","isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-eef578260fd80f8fff94.js"></script><script src="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" async=""></script><script src="/_next/static/chunks/framework-64eb7138163e04c228e4.js" async=""></script><script src="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" async=""></script><script src="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" async=""></script><script src="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" async=""></script><script src="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_buildManifest.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_ssgManifest.js" async=""></script></body></html>

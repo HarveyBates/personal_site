@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>PlatformIO</title><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css"/><meta name="next-head-count" content="4"/><link rel="preload" href="/_next/static/css/a59da0eacbea689829ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a59da0eacbea689829ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/87c8624d19ac042a1b3c.css" as="style"/><link rel="stylesheet" href="/_next/static/css/87c8624d19ac042a1b3c.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework-64eb7138163e04c228e4.js" as="script"/><link rel="preload" href="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" as="script"/><link rel="preload" href="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" as="script"/></head><body><div id="__next"><div><div><div class="Navbar_header__G42YY"><div class="Navbar_titleName__1SzAf"><a href="/knowledge/programming/PlatformIO#">Harvey Bates</a></div><div class="Navbar_navbar__Nhtc0"><a href="/knowledge/programming/PlatformIO#">Home</a><a href="/knowledge/programming/PlatformIO#">About</a><a href="/knowledge/programming/PlatformIO#">Blog</a><a href="/knowledge/programming/PlatformIO#">Knowledge</a><a href="/knowledge/programming/PlatformIO#">Publications</a></div></div></div><div><main><div><div class="Knowledge_page__2flRE"><div><h2 id="description">Description</h2>
+<p>Platform IO allows for easy uploading and viewing of microcontroller input and outputs. This information covers the command line interface for PlatformIO.</p>
+<p>Website: <a href="https://platformio.org/">PlatformIO</a></p>
+<h2 id="install">Install</h2>
+<p>Curl (requires python):</p>
+<pre><code class="language-bash">curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py -o get-platformio.py
+python3 get-platformio.py
+</code></pre>
+<p>Add given path to PATH variables. If confused see this <a href="https://docs.platformio.org/en/latest/core/installation.html">link</a>.</p>
+<p>Homebrew (MacOS &amp; Linux):</p>
+<pre><code class="language-bash">brew install platformio
+</code></pre>
+<h2 id="setup">Setup</h2>
+<p>Website: <a href="https://docs.platformio.org/en/latest/core/userguide/index.html">User Guide</a></p>
+<p><strong>Pretty sure platformio-cli requires the main file name to be the same as the folder name.</strong></p>
+<pre><code class="language-bash">pio project init # Init project in current dir with folders and resources
+</code></pre>
+<p>Edit the .yml file with project specific configuration.</p>
+<pre><code class="language-bash">[env:teensy41]
+platform = teensy
+board = teensy41
+framework = arduino
+
+board_build.mcu = imxrt1062
+
+lib_deps =
+milesburton/DallasTemperature @^3.9.1
+
+upload_protocol = teensy-cli
+
+platform_packages = 
+toolchain-gccarmnoneeabi@~1.90301.200702
+tool-teensy@https://github.com/maxgerhardt/pio-tool-teensy-arm/archive/master.zip
+</code></pre>
+<h2 id="execute">Execute</h2>
+<pre><code class="language-bash">pio --help # Display help
+pio run # Compile code
+pio run -t upload # Run then upload
+pio run -e board_name -t upload # Run and upload to specific board
+</code></pre>
+</div></div></div></main></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"htmlString":"\u003ch2 id=\"description\"\u003eDescription\u003c/h2\u003e\n\u003cp\u003ePlatform IO allows for easy uploading and viewing of microcontroller input and outputs. This information covers the command line interface for PlatformIO.\u003c/p\u003e\n\u003cp\u003eWebsite: \u003ca href=\"https://platformio.org/\"\u003ePlatformIO\u003c/a\u003e\u003c/p\u003e\n\u003ch2 id=\"install\"\u003eInstall\u003c/h2\u003e\n\u003cp\u003eCurl (requires python):\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ecurl -fsSL https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py -o get-platformio.py\npython3 get-platformio.py\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eAdd given path to PATH variables. If confused see this \u003ca href=\"https://docs.platformio.org/en/latest/core/installation.html\"\u003elink\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eHomebrew (MacOS \u0026amp; Linux):\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ebrew install platformio\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"setup\"\u003eSetup\u003c/h2\u003e\n\u003cp\u003eWebsite: \u003ca href=\"https://docs.platformio.org/en/latest/core/userguide/index.html\"\u003eUser Guide\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePretty sure platformio-cli requires the main file name to be the same as the folder name.\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epio project init # Init project in current dir with folders and resources\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eEdit the .yml file with project specific configuration.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003e[env:teensy41]\nplatform = teensy\nboard = teensy41\nframework = arduino\n\nboard_build.mcu = imxrt1062\n\nlib_deps =\nmilesburton/DallasTemperature @^3.9.1\n\nupload_protocol = teensy-cli\n\nplatform_packages = \ntoolchain-gccarmnoneeabi@~1.90301.200702\ntool-teensy@https://github.com/maxgerhardt/pio-tool-teensy-arm/archive/master.zip\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"execute\"\u003eExecute\u003c/h2\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003epio --help # Display help\npio run # Compile code\npio run -t upload # Run then upload\npio run -e board_name -t upload # Run and upload to specific board\n\u003c/code\u003e\u003c/pre\u003e\n","data":{"title":"PlatformIO"}},"__N_SSG":true},"page":"/knowledge/programming/[programming]","query":{"programming":"PlatformIO"},"buildId":"-ivy6eWUB8p0P6rt7VF27","isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-eef578260fd80f8fff94.js"></script><script src="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" async=""></script><script src="/_next/static/chunks/framework-64eb7138163e04c228e4.js" async=""></script><script src="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" async=""></script><script src="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" async=""></script><script src="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" async=""></script><script src="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_buildManifest.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_ssgManifest.js" async=""></script></body></html>

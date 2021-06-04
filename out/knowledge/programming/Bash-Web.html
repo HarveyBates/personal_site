@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>Web Functions in the Terminal</title><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css"/><meta name="next-head-count" content="4"/><link rel="preload" href="/_next/static/css/a59da0eacbea689829ee.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a59da0eacbea689829ee.css" data-n-g=""/><link rel="preload" href="/_next/static/css/87c8624d19ac042a1b3c.css" as="style"/><link rel="stylesheet" href="/_next/static/css/87c8624d19ac042a1b3c.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework-64eb7138163e04c228e4.js" as="script"/><link rel="preload" href="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" as="script"/><link rel="preload" href="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" as="script"/></head><body><div id="__next"><div><div><div class="Navbar_header__G42YY"><div class="Navbar_titleName__1SzAf"><a href="/knowledge/programming/Bash-Web#">Harvey Bates</a></div><div class="Navbar_navbar__Nhtc0"><a href="/knowledge/programming/Bash-Web#">Home</a><a href="/knowledge/programming/Bash-Web#">About</a><a href="/knowledge/programming/Bash-Web#">Blog</a><a href="/knowledge/programming/Bash-Web#">Knowledge</a><a href="/knowledge/programming/Bash-Web#">Publications</a></div></div></div><div><main><div><div class="Knowledge_page__2flRE"><div><h2 id="description">Description</h2>
+<p>Commands for downloading and interacing with websites and web hosted files.</p>
+<h2 id="curl">Curl</h2>
+<p>Website: <a href="https://curl.se/">Curl</a></p>
+<p>Used in termial to tranfer data over http/s.</p>
+<pre><code class="language-bash">curl https://www.example.com # Show html in terminal
+curl https://www.example.com -O example.html # Save to html
+curl https://www.example.com/filename.cpp -O &quot;filename.cpp&quot; # Save a file
+# or
+curl -O http://www.example.com/filename.cpp &quot;filename.cpp&quot;
+</code></pre>
+<h2 id="wget">WGet</h2>
+<pre><code class="language-bash">wget http://www.example.com/filename.cpp # Download file
+</code></pre>
+<h2 id="ping">Ping</h2>
+<p>Test website, get IP address and echo response.</p>
+<pre><code class="language-bash">ping sitename.com # Test site and get public IP address
+ping -6 sitename.com # Request IPv6
+ping -4 sitename.com # Request IPv4
+ping -a sitename.com # Generate sound on successful request
+</code></pre>
+<h2 id="lync-web-browser-in-terminal">Lync (Web Browser in Terminal)</h2>
+<p>Lynx is a command line web browser, it works well in most cases.</p>
+<p>Website: <a href="https://www.commandlinux.com/man-page/man1/lynx.1.html">Lynx</a></p>
+<h3 id="install-homebrew">Install (Homebrew):</h3>
+<pre><code class="language-bash">brew install lynx
+</code></pre>
+<h3 id="execute">Execute</h3>
+<pre><code class="language-bash">lynx # Run
+lynx sitename.com # Run on specific site
+</code></pre>
+</div></div></div></main></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"htmlString":"\u003ch2 id=\"description\"\u003eDescription\u003c/h2\u003e\n\u003cp\u003eCommands for downloading and interacing with websites and web hosted files.\u003c/p\u003e\n\u003ch2 id=\"curl\"\u003eCurl\u003c/h2\u003e\n\u003cp\u003eWebsite: \u003ca href=\"https://curl.se/\"\u003eCurl\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eUsed in termial to tranfer data over http/s.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ecurl https://www.example.com # Show html in terminal\ncurl https://www.example.com -O example.html # Save to html\ncurl https://www.example.com/filename.cpp -O \u0026quot;filename.cpp\u0026quot; # Save a file\n# or\ncurl -O http://www.example.com/filename.cpp \u0026quot;filename.cpp\u0026quot;\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"wget\"\u003eWGet\u003c/h2\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ewget http://www.example.com/filename.cpp # Download file\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"ping\"\u003ePing\u003c/h2\u003e\n\u003cp\u003eTest website, get IP address and echo response.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003eping sitename.com # Test site and get public IP address\nping -6 sitename.com # Request IPv6\nping -4 sitename.com # Request IPv4\nping -a sitename.com # Generate sound on successful request\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2 id=\"lync-web-browser-in-terminal\"\u003eLync (Web Browser in Terminal)\u003c/h2\u003e\n\u003cp\u003eLynx is a command line web browser, it works well in most cases.\u003c/p\u003e\n\u003cp\u003eWebsite: \u003ca href=\"https://www.commandlinux.com/man-page/man1/lynx.1.html\"\u003eLynx\u003c/a\u003e\u003c/p\u003e\n\u003ch3 id=\"install-homebrew\"\u003eInstall (Homebrew):\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003ebrew install lynx\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3 id=\"execute\"\u003eExecute\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-bash\"\u003elynx # Run\nlynx sitename.com # Run on specific site\n\u003c/code\u003e\u003c/pre\u003e\n","data":{"title":"Web Functions in the Terminal"}},"__N_SSG":true},"page":"/knowledge/programming/[programming]","query":{"programming":"Bash-Web"},"buildId":"-ivy6eWUB8p0P6rt7VF27","isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-eef578260fd80f8fff94.js"></script><script src="/_next/static/chunks/webpack-189c53927ffd3caf09c3.js" async=""></script><script src="/_next/static/chunks/framework-64eb7138163e04c228e4.js" async=""></script><script src="/_next/static/chunks/main-71948af4b0f09c0fc30e.js" async=""></script><script src="/_next/static/chunks/pages/_app-ecab9d88465f23b4ce52.js" async=""></script><script src="/_next/static/chunks/25-2f766847420a3f7b9c8d.js" async=""></script><script src="/_next/static/chunks/pages/knowledge/programming/%5Bprogramming%5D-78b343a6467ff2c4be67.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_buildManifest.js" async=""></script><script src="/_next/static/-ivy6eWUB8p0P6rt7VF27/_ssgManifest.js" async=""></script></body></html>
