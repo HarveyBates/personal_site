@@ -4,6 +4,7 @@ import path from 'path';
 import matter from 'gray-matter'; // YML parser
 import Head from 'next/head';
 import marked from 'marked'; // Markdown to html
+import Style from '../../../styles/Knowledge.module.css'
 
 const ElectronicsPost = ({htmlString, data}) => {
 	return (
@@ -11,7 +12,7 @@ const ElectronicsPost = ({htmlString, data}) => {
 			<Head>
 				<title>{data.title}</title>
 			</Head>
-			<div>
+			<div className={Style.page}>
 				<div dangerouslySetInnerHTML={{__html: htmlString}}/>
 			</div>	
 		</div>
@@ -34,7 +35,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {electronics}}) => {
-	const markdown = fs.readFileSync(path.join('knowledge/electronics', knowledge + ".md"), 'utf8');
+	const markdown = fs.readFileSync(path.join('knowledge/electronics', electronics + ".md"), 'utf8');
 	const parsedMarkdown = matter(markdown);
 	const htmlString = marked(parsedMarkdown.content);
 	return {

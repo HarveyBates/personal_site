@@ -4,6 +4,7 @@ import path from 'path';
 import matter from 'gray-matter'; // YML parser
 import Head from 'next/head';
 import marked from 'marked'; // Markdown to html
+import Style from '../../../styles/Knowledge.module.css'
 
 const ModelingPost = ({htmlString, data}) => {
 	return (
@@ -11,7 +12,7 @@ const ModelingPost = ({htmlString, data}) => {
 			<Head>
 				<title>{data.title}</title>
 			</Head>
-			<div>
+			<div className={Style.page}>
 				<div dangerouslySetInnerHTML={{__html: htmlString}}/>
 			</div>	
 		</div>
