@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+	"cy:open": "cypress open",
+	"test": "start-server-and-test dev 3000 cy:open"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -16,5 +18,9 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "sass": "^1.34.0"
+  },
+  "devDependencies": {
+    "cypress": "^7.4.0",
+    "start-server-and-test": "^1.12.4"
   }
 }
