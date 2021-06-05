@@ -5,6 +5,7 @@ import Link from 'next/link';
 import path from 'path';
 import Image from 'next/image'
 
+
 export default function Home({Programming, Modeling, Electronics , Strava}) {
 	// Calculate weekly totals
 	var totalSwim = 0;
