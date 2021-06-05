@@ -1,45 +1,57 @@
-.button {
-	background-color: white; 
-	border: none;
-	color: #82015d;
-	box-shadow: 0px 0px 10px #82015d;
-	padding: 1rem 1.5rem;
-	margin: 1rem;
-	border-radius: 1rem;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	font-weight: bold;
-	transition: all 1s ease;
-}
-.button:hover{
-	box-shadow: 0px 0px 30px #82015d;
-}
-
 .wrapper {
-	display: flex;
-	justify-content: space-between;
+	display: inline-block;
+	background: #F3F3F3;
+	box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+	height: 100%;
 }
 
-.weather{
-	width: 60%;
+.sport_card{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.sport_card h3{
+	text-align: left;
+	padding-top: 1rem;
+	margin: 1rem;
+	font-weight: lighter;
+}
+
+.sport_row{
+	display: inline-flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.sport_activity{
+	align-items: center;
+	padding: 1rem;
+	padding-bottom: 0;
+}
+.sport_activity h5{
+	font-weight: lighter;
+}
+
+.sidebar_divider{
+	border-top: 2px solid #0B2C50;
+	width: 90%;
 }
 
 .knowledge{
 	display: flex;
-	justify-content: space-around;
+	flex-wrap: wrap;
 	flex-direction: column;
-	padding: 1rem;
-	width: 10rem;
-	height: 100vh;
-	overflow: hidden;
-	white-space: nowrap;
+	margin: 1rem;
+	margin-top: 0;
+}
+.knowledge h3{
+	font-weight: lighter;
 }
 
-.knowledge h3{
-	margin: 0.5rem;
-	font-weight: lighter;
+.post{
+	padding-top: 0.5rem;
 }
 
 .post a{

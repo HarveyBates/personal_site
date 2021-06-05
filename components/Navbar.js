@@ -6,14 +6,10 @@ const Navbar = () => {
 		<div>
 			<div className={navStyles.header}>
 				<div className={navStyles.titleName}>
-					<Link href="#">Harvey Bates</Link>
+					<Link href="index">Harvey Bates</Link>
 				</div>
 				<div className={navStyles.navbar}>
-					<Link href="#">Home</Link>
-					<Link href="#">About</Link>
-					<Link href="#">Blog</Link>
-					<Link href="#">Knowledge</Link>
-					<Link href="#">Publications</Link>
+					<Link href="#">HB Scientific</Link>
 				</div>
 			</div>
 		</div>
