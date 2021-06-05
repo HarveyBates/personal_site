@@ -14,6 +14,7 @@ module.exports = {
 		return config
 	},
 	images: {
-		loader: 'imgix'
-	}
+		loader: 'cloudinary',
+		path: '	https://res.cloudinary.com/dpfwvr13b/',
+	},
 }
