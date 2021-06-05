@@ -3,6 +3,8 @@ import styles from '../styles/Home.module.css'
 import fs from 'fs'; // File system
 import Link from 'next/link';
 import path from 'path';
+//import dotenv from 'dotenv'; // Environment variables 
+// dotenv.config()
 
 export default function Home({weatherInfo, Programming, Modeling, Electronics}) {
 	function convertTemp(kTemp){
@@ -65,12 +67,13 @@ export default function Home({weatherInfo, Programming, Modeling, Electronics}) 
 
 export const getStaticProps = async () => {
 	// Create an array of async api calls
+	const WEATHER_KEY = process.env.WEATHER_KEY;
 	const urls = [await
-		fetch('https://api.openweathermap.org/data/2.5/weather?q=Orange,AU&appid=71d062acc5b6842bb52acd51dabf4214'),
+		fetch('https://api.openweathermap.org/data/2.5/weather?q=Orange,AU&appid=' + WEATHER_KEY),
 		await
-		fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&appid=71d062acc5b6842bb52acd51dabf4214'),
+		fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&appid=' + WEATHER_KEY),
 		await
-		fetch('https://api.openweathermap.org/data/2.5/weather?q=Griffith,AU&appid=71d062acc5b6842bb52acd51dabf4214')];
+		fetch('https://api.openweathermap.org/data/2.5/weather?q=Griffith,AU&appid=' + WEATHER_KEY)];
 	
 	// Preform async api calls
 	const weather = await Promise.all(urls);

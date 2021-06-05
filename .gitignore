@@ -30,6 +30,7 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Misc
 .DS_Store
 *.swp
 
@@ -40,3 +41,5 @@ firebase-error.log*
 firebase-debug.log*
 .firebase/
 
+# Environment variables
+.env
