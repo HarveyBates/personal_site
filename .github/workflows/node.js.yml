@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
+
 jobs:
   build:
 
@@ -27,7 +30,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
       env:
-        WEATHER_KEY: ${{ secrets.WEATHER_KEY}}
+        WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
     - run: npm run build --if-present
       env:
-        WEATHER_KEY: ${{ secrets.WEATHER_KEY}}
+        WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
