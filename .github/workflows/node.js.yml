@@ -26,4 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+      env:
+        WEATHER_KEY: ${{ secrets.WEATHER_KEY}}
     - run: npm run build --if-present
+      env:
+        WEATHER_KEY: ${{ secrets.WEATHER_KEY}}

@@ -13,10 +13,15 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
+        env:
+          WEATHER_KEY: ${{ secrets.WEATHER_KEY}}
       - run: npm run build
+        env:
+          WEATHER_KEY: ${{ secrets.WEATHER_KEY}}
       - name: Github Action for Firebase
         uses: w9jds/firebase-action@v2.0.0
         with:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          WEATHER_KEY: ${{ secrets.WEATHER_KEY}}

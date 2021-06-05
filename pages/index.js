@@ -3,8 +3,6 @@ import styles from '../styles/Home.module.css'
 import fs from 'fs'; // File system
 import Link from 'next/link';
 import path from 'path';
-//import dotenv from 'dotenv'; // Environment variables 
-// dotenv.config()
 
 export default function Home({weatherInfo, Programming, Modeling, Electronics}) {
 	function convertTemp(kTemp){
