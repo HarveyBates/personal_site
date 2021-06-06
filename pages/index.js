@@ -3,11 +3,9 @@ import styles from '../styles/Home.module.css'
 import fs from 'fs'; // File system
 import Link from 'next/link';
 import path from 'path';
-import Image from 'next/image'
+import Image from 'next/image';
 
-
-export default function Home({Programming, Modeling, Electronics , Strava}) {
-	// Calculate weekly totals
+export default function Home({Programming, Modeling, Electronics, Strava}) {
 	var totalSwim = 0;
 	var totalBike = 0;
 	var totalRun = 0;
@@ -25,7 +23,6 @@ export default function Home({Programming, Modeling, Electronics , Strava}) {
 	totalSwim = (totalSwim / 1000).toFixed(2);
 	totalBike = (totalBike / 1000).toFixed(2);
 	totalRun = (totalRun / 1000).toFixed(2);
-	
 	return (
 		<div className={styles.wrapper}>
 			<Head>
@@ -99,8 +96,7 @@ export const getStaticProps = async () => {
 	
 	const electronicsFiles = fs.readdirSync('knowledge/electronics');
 	const electronicsMdFiles = electronicsFiles.filter(file => path.extname(file) === ".md");
-
-	// Get access token using refresh token	
+	
 	const stravaRefreshToken = "https://www.strava.com/oauth/token?client_id=" + process.env.STRAVA_ID + "&client_secret=" + process.env.STRAVA_SECRET + "&refresh_token=" + process.env.STRAVA_REFRESH + "&grant_type=refresh_token";
 	const stravaGetAccess = await fetch(stravaRefreshToken, {
 		method: "POST"
@@ -114,6 +110,7 @@ export const getStaticProps = async () => {
 		method: "GET",
 		headers: {"Authorization": "Bearer " + stravaGetAccess.access_token}
 	}).then(response => response.json()).catch(error => console.log(error));
+	
 
 	return {
 		props: {
@@ -121,7 +118,8 @@ export const getStaticProps = async () => {
 			Modeling: modelingMdFiles.map(fileName => fileName.replace(".md", "")),
 			Electronics: electronicsMdFiles.map(fileName => fileName.replace(".md", "")),
 			Strava: stravaRequest
-		}
+		},
+		revalidate: 60 * 10,
 	}
 }
 
