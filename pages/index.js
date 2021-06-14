@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import fs from 'fs'; // File system
@@ -24,64 +25,81 @@ export default function Home({Programming, Modeling, Electronics, Strava}) {
 	totalBike = (totalBike / 1000).toFixed(2);
 	totalRun = (totalRun / 1000).toFixed(2);
 	return (
-		<div className={styles.wrapper}>
-			<Head>
-				<title>Harvey Bates</title>
-			</Head>
-			<div className={styles.sport_card}>
-				<h3>Weekly Activity Totals</h3>
-				<div className={styles.sport_row}>
-					<div className={styles.sport_activity}>
-						<Image src="/swimming.png" alt="cycling" width={32}
-							height={32}/>
-						<h5>{totalSwim} km</h5>
+		<div className={styles.page}>
+			<div className={styles.sidebar}>
+				<Head>
+					<title>Harvey Bates</title>
+				</Head>
+				<div className={styles.sport_card}>
+					<h3>Weekly Activity Totals</h3>
+					<div className={styles.sport_row}>
+						<div className={styles.sport_activity}>
+							<Image src="/swimming.png" alt="cycling" width={32}
+								height={32}/>
+							<h5>{totalSwim} km</h5>
+						</div>
+						<div className={styles.sport_activity}>
+							<Image src="/cycling.png" alt="cycling" width={32}
+								height={32}/>
+							<h5>{totalBike} km</h5>
+						</div>
+						<div className={styles.sport_activity}>
+							<Image src="/running.png" alt="cycling" width={32}
+								height={32}/>
+							<h5>{totalRun} km</h5>
+						</div>
 					</div>
-					<div className={styles.sport_activity}>
-						<Image src="/cycling.png" alt="cycling" width={32}
-							height={32}/>
-						<h5>{totalBike} km</h5>
+				</div>
+				<hr className={styles.sidebar_divider}></hr>
+				<div className={styles.knowledge}>
+					<h3>Programming</h3>
+					{Programming.map(post => {
+						return (
+							<div key={post} className={styles.post}>
+								<Link key={post} href={"/knowledge/programming/" + post}>
+									<a>{post}</a>
+								</Link>
+							</div>
+						);
+					})}
+					<h3>Electronics</h3>
+					{Electronics.map(post => {
+						return (
+							<div key={post} className={styles.post}>
+								<Link key={post} href={"/knowledge/electronics/" + post}>
+									<a>{post}</a>
+								</Link>
+							</div>
+						);
+					})}
+					<h3>Modeling</h3>
+					{Modeling.map(post => {
+						return (
+							<div key={post} className={styles.post}>
+								<Link key={post} href={"/knowledge/modeling/" + post}>
+									<a>{post}</a>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+			<div className={styles.content}>
+				<div className={styles.publications_card}>
+					<div className={styles.publications_text}>
+						<h4>The Phenobottle, an open-source photobioreactor platform for environmental simulation</h4>
+						<h5>Harvey Bates, Alonso Zavafer, Milán Szabó & Peter J. Ralph</h5>
+						<p>Microalgal biotechnologies have great potential for biofuels, bioremediation, food technologies and more recently the production of pharmaceuticals. However, a major obstacle to use microalgae industrially is the optimisation of environmental parameters to the microalgal species of interest (light, CO2 availability, nutrients, etc.). If one aims to optimise productivity, the use of photobioreactors (PBRs) is essential. However, the restrictive design of the few commercial bioreactors and their elevated costs (> $10,000 USD ea.) prevents their use as a mainstream tool. To propel microalgal research we present the Phenobottle, a fully customizable open-source PBR platform (consisting of hardware and software). As the optimisation of photosynthesis is a central process to increasing the productivity of microalgae, the Phenobottle is equipped with a chlorophyll a fluorometer and growth sensors to probe metabolic performance in near-real time. An introductory guide is provided and the Phenobottle's sensors are benchmarked against commercial instruments using the model green alga Chlorella vulgaris.</p>
+						<Link key="phenobottle-doi" href="https://doi.org/10.1016/j.algal.2020.102105">
+							<a>Read Publication</a>
+						</Link>
 					</div>
-					<div className={styles.sport_activity}>
-						<Image src="/running.png" alt="cycling" width={32}
-							height={32}/>
-						<h5>{totalRun} km</h5>
+					<div className={styles.publications_img}>
+						<Image src="/phenobottle.png" alt="cycling" width={300}
+							height={300}/>
 					</div>
 				</div>
 			</div>
-			<hr className={styles.sidebar_divider}></hr>
-			<div className={styles.knowledge}>
-				<h3>Programming</h3>
-				{Programming.map(post => {
-					return (
-						<div key={post} className={styles.post}>
-							<Link key={post} href={"/knowledge/programming/" + post}>
-								<a>{post}</a>
-							</Link>
-						</div>
-					);
-				})}
-				<h3>Electronics</h3>
-				{Electronics.map(post => {
-					return (
-						<div key={post} className={styles.post}>
-							<Link key={post} href={"/knowledge/electronics/" + post}>
-								<a>{post}</a>
-							</Link>
-						</div>
-					);
-				})}
-				<h3>Modeling</h3>
-				{Modeling.map(post => {
-					return (
-						<div key={post} className={styles.post}>
-							<Link key={post} href={"/knowledge/modeling/" + post}>
-								<a>{post}</a>
-							</Link>
-						</div>
-					);
-				})}
-			</div>
-
 		</div>
 	);
 }
@@ -119,7 +137,6 @@ export const getStaticProps = async () => {
 			Electronics: electronicsMdFiles.map(fileName => fileName.replace(".md", "")),
 			Strava: stravaRequest
 		},
-		revalidate: 60 * 10,
 	}
 }
 

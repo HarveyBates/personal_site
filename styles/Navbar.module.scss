@@ -1,5 +1,5 @@
 .header {
-	background-color: #0B2C50;
+	background-image: linear-gradient(90deg, #002253, #009a83);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -13,7 +13,6 @@
 	font-weight: lighter;
 	margin: 0;
 	padding: 0 10px;
-	overflow: hidden;
 	display: inline-block;
 	color: white;
 	text-decoration: none;
@@ -22,7 +21,6 @@
 .navbar {
 	margin: 0;
 	padding: 0 10px;
-	overflow: hidden;
 	display: inline-block;
 }
 

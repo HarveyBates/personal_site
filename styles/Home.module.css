@@ -1,10 +1,49 @@
-.wrapper {
-	display: inline-block;
-	position: fixed;
-	z-index: 1;
+
+.page {
+	display: flex;
+}
+
+.content {
+	margin-left: 17rem;
+	margin-right: 0.5rem;
+}
+.content h3 {
+	font-weight: lighter;
+}
+.content h5 {
+	font-weight: lighter;
+}
+
+.publications_card {
+	display: flex;
 	background: #F3F3F3;
 	box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+	border-radius: 1rem;
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.publications_img{
+	width: 20%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem;
+	padding-top: 3rem;
+}
+
+.publications_text{
+	width: 80%;
+}
+
+.sidebar {
+	display: inline-block;
+	position: absolute;
+	z-index: 1;
+	background: #F3F3F3;
+	box-shadow: 5px 0px 5px rgba(0,0,0,.08); 
 	height: 100%;
+	padding-bottom: 10rem;
 }
 
 .sport_card{
