@@ -58,8 +58,10 @@ p # Paste after cursor
 yw # Copy word
 yy # Copy line
 
-A # Insert at end of line
-I # Insert at start of line
+gQQ # Single line to multi-line
+J # Join lines
+
+:%s/\s+$//e # Remove whitespace from file
 ```
 
 ## Searching
@@ -80,7 +82,7 @@ Alternative using visual-multi (if installed).
 Ctrl-n # Open visual multi
 n # Select next item
 i # Edit and insert new text
-esc # Escape visual multi-mode
+esc esc # Escape visual multi-mode (must press twice)
 ```
 ### Indent or De-Indent Multiple Lines
 #### Entire file.

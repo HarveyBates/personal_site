@@ -31,7 +31,7 @@ hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('latex', latex);
 hljs.registerLanguage('markdown', markdown);
 
-const ProgammingPost = ({htmlString, data}) => {
+const ProgrammingPost = ({htmlString, data}) => {
 	useEffect(() => {
 		hljs.initHighlighting();
 	}, []);
@@ -75,5 +75,5 @@ export const getStaticProps = async ({params: {programming}}) => {
 	};
 };
 
-export default ProgammingPost;
+export default ProgrammingPost;
 
