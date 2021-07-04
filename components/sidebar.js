@@ -53,7 +53,7 @@ export default function SideBar({Programming, Modeling, Electronics, Strava}){
 					{Programming.map(post => {
 						return (
 							<div key={post} className={styles.post}>
-								<Link key={post} href={"/knowledge/programming/" + post}>
+								<Link href={"/knowledge/programming/" + post} passHref>
 									<a>{post}</a>
 								</Link>
 							</div>
@@ -63,7 +63,7 @@ export default function SideBar({Programming, Modeling, Electronics, Strava}){
 					{Electronics.map(post => {
 						return (
 							<div key={post} className={styles.post}>
-								<Link key={post} href={"/knowledge/electronics/" + post}>
+								<Link href={"/knowledge/electronics/" + post} passHref>
 									<a>{post}</a>
 								</Link>
 							</div>
@@ -73,7 +73,7 @@ export default function SideBar({Programming, Modeling, Electronics, Strava}){
 					{Modeling.map(post => {
 						return (
 							<div key={post} className={styles.post}>
-								<Link key={post} href={"/knowledge/modeling/" + post}>
+								<Link href={"/knowledge/modeling/" + post} passHref>
 									<a>{post}</a>
 								</Link>
 							</div>

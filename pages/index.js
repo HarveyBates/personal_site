@@ -11,7 +11,6 @@ export default function Home({Programming, Modeling, Electronics, Strava}) {
 	);
 }
 
-
 export const getStaticProps = async () => {
 	// Add links to knowledge
 	const programmingFiles = fs.readdirSync('knowledge/programming');
