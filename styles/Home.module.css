@@ -1,49 +1,18 @@
-
 .page {
 	display: flex;
-}
-
-.content {
-	margin-left: 17rem;
-	margin-right: 0.5rem;
-}
-.content h3 {
-	font-weight: lighter;
-}
-.content h5 {
-	font-weight: lighter;
-}
-
-.publications_card {
-	display: flex;
-	background: #F3F3F3;
-	box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-	border-radius: 1rem;
-	padding: 1rem;
+	flex-wrap: wrap;
 	margin: 1rem;
-}
-
-.publications_img{
-	width: 20%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 1rem;
-	padding-top: 3rem;
-}
-
-.publications_text{
-	width: 80%;
 }
 
 .sidebar {
-	display: inline-block;
-	position: absolute;
-	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	width: 25%;
+	margin: 1rem;
+	padding-bottom: 10rem;
 	background: #F3F3F3;
 	box-shadow: 5px 0px 5px rgba(0,0,0,.08); 
-	height: 100%;
-	padding-bottom: 10rem;
+	min-width: 280px;
 }
 
 .sport_card{
@@ -55,6 +24,9 @@
 	text-align: left;
 	padding-top: 1rem;
 	margin: 1rem;
+	font-weight: lighter;
+}
+.sport_card h2{
 	font-weight: lighter;
 }
 
@@ -90,11 +62,14 @@
 .knowledge h3{
 	font-weight: lighter;
 }
+.knowledge h2{
+	text-align: center;
+	font-weight: lighter;
+}
 
 .post{
 	padding-top: 0.5rem;
 }
-
 .post a{
 	margin: 1rem;
 	color: #0645ad;
@@ -104,3 +79,33 @@
 .post a:hover{
 	text-decoration: underline;
 }
+
+.links{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	margin: 1rem;
+	margin-top: 0;
+}
+.links h3{
+	font-weight: lighter;
+}
+.links h2{
+	text-align: center;
+	font-weight: lighter;
+}
+.links a{
+	text-decoration: none;
+	padding-top: 0.5rem;
+	padding-left: 0.5rem;
+	color: #0645ad;
+	transition: all 1s ease;
+}
+.links a:hover{
+	text-decoration: underline;
+}
+
+
+
+
+

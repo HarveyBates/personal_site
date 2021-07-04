@@ -28,7 +28,7 @@ export default function SideBar({Programming, Modeling, Electronics, Strava}){
 					<title>Harvey Bates</title>
 				</Head>
 				<div className={styles.sport_card}>
-					<h3>Weekly Activity Totals</h3>
+					<h2>Weekly Activity Totals</h2>
 					<div className={styles.sport_row}>
 						<div className={styles.sport_activity}>
 							<Image src="/swimming.png" alt="cycling" width={32}
@@ -49,6 +49,7 @@ export default function SideBar({Programming, Modeling, Electronics, Strava}){
 				</div>
 				<hr className={styles.sidebar_divider}></hr>
 				<div className={styles.knowledge}>
+					<h2>Knowledge</h2>
 					<h3>Programming</h3>
 					{Programming.map(post => {
 						return (
@@ -79,6 +80,19 @@ export default function SideBar({Programming, Modeling, Electronics, Strava}){
 							</div>
 						);
 					})}
+				</div>
+				<hr className={styles.sidebar_divider}></hr>
+				<div className={styles.links}>
+					<h2>Links</h2>
+					
+					<h3>UX/UI</h3>
+					<a href="https://material.io/">Material Design</a>
+					<a href="https://lawsofux.com/">Laws of UX</a>
+					
+					<h3>Electronics</h3>
+					<a href="https://www.pjrc.com/teensy/pinout.html">Teensy Pinouts</a>
+					<a href="https://www.circuitlab.com/editor/#?id=7pq5wm&from=homepage">Circuit LAB</a>			
+
 				</div>
 			</div>
 		</div>
