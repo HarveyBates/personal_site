@@ -19,11 +19,18 @@ Insert at top of ``.md`` file to give some metadata in the form of a ``.yml`` fi
 ```yml
 ---
 title: TITLE
-author: Author
+author:
+- Author
+date: \today{}
 header: Header
 footer: Footer
-geometry: margin=1in
+geometry: margin=3cm
 abstract: Enter abstract 
+header-includes:
+- \usepackage{setspace}
+- \doublespacing
+- \usepackage{lineno}
+- \linenumbers
 ...
 ```
 ### Links

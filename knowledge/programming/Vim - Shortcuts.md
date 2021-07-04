@@ -54,6 +54,8 @@ d{ # Delete from cursor to previous line break
 
 P # Paste before cursor
 p # Paste after cursor
+"+P # Paste before cursor (or above line) from system clipboard
+"+p # Paste after cursor (or next line) from system clipboard
 
 yw # Copy word
 yy # Copy line
@@ -69,6 +71,9 @@ J # Join lines
 ?"term" # Search for term (case-sensitive)
 :noh # Stop highlighting
 ```
+
+### Regex 
+Find some useful vim regex patterns here: [vimregex.com](http://www.vimregex.com/)
 
 ## Multi-line Editing
 ```bash
@@ -98,7 +103,7 @@ j or k # To select multiple lines
 ```
 
 ## Tags
-Require CTags.
+Helps navigate between classes and functions in large code bases. Requires CTags.
 
 ### Installation
 ```bash
