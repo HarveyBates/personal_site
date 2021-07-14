@@ -1,0 +1,120 @@
+{
+  "main": {
+    "id": "baf9d917337f69e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "16f0fd329ba24253",
+        "type": "split",
+        "children": [
+          {
+            "id": "b515cb25c55b18fb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "programming/Python - Requests.md",
+                "mode": "source"
+              }
+            }
+          },
+          {
+            "id": "ccebaef146c52e23",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "programming/Python - Numpy.md",
+                "mode": "preview"
+              }
+            }
+          }
+        ],
+        "direction": "horizontal"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cbed99726f4db660",
+    "type": "split",
+    "children": [
+      {
+        "id": "48c02245851084d5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4e876f254acff601",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "c1e9aa0242e0a2e2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b41a6621673c78c2",
+    "type": "split",
+    "children": [
+      {
+        "id": "e6028c0a84184dfe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "03e1e57376ffe8d7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "programming/Python - Requests.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "b515cb25c55b18fb",
+  "lastOpenFiles": [
+    "programming/Python - Requests.md",
+    "programming/Python - Plotting.md",
+    "programming/Python - Pandas.md",
+    "programming/Python - Numpy.md",
+    "programming/Python - Dates.md",
+    "programming/Pandoc - Commands.md",
+    "programming/Python - Pandas 1.md",
+    "programming/Python - Dates 1.md",
+    "programming/Python - Jupyter - Dates.md",
+    "programming/Python - Jupyter - Plotting.md"
+  ]
+}
