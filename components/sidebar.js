@@ -3,98 +3,57 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function SideBar({Programming, Modeling, Electronics, Strava}){
-	var totalSwim = 0;
-	var totalBike = 0;
-	var totalRun = 0;
-	Strava.map(activity => {
-		if(activity.type == "Swim"){
-			totalSwim += activity.distance;	
-		}
-		else if(activity.type == "Bike" || activity.type == "VirtualRide"){
-			totalBike += activity.distance;
-		}
-		else if(activity.type == "Run" || activity.type == "VirtualRun"){
-			totalRun += activity.distance;
-		}
-	});
-	totalSwim = (totalSwim / 1000).toFixed(2);
-	totalBike = (totalBike / 1000).toFixed(2);
-	totalRun = (totalRun / 1000).toFixed(2);
+export default function SideBar({Programming, Modeling, Electronics}){
 	return (
 		<div className={styles.page}>
 			<div className={styles.sidebar}>
 				<Head>
 					<title>Harvey Bates</title>
 				</Head>
-				<div className={styles.sport_card}>
-					<h2>Weekly Activity Totals</h2>
-					<div className={styles.sport_row}>
-						<div className={styles.sport_activity}>
-							<Image src="/swimming.png" alt="cycling" width={32}
-								height={32}/>
-							<h5>{totalSwim} km</h5>
-						</div>
-						<div className={styles.sport_activity}>
-							<Image src="/cycling.png" alt="cycling" width={32}
-								height={32}/>
-							<h5>{totalBike} km</h5>
-						</div>
-						<div className={styles.sport_activity}>
-							<Image src="/running.png" alt="cycling" width={32}
-								height={32}/>
-							<h5>{totalRun} km</h5>
-						</div>
-					</div>
-				</div>
-				<hr className={styles.sidebar_divider}></hr>
+				<h2 className={styles.sidebar_header}>Knowledge</h2>
 				<div className={styles.knowledge}>
-					<h2>Knowledge</h2>
 					<h3>Programming</h3>
-					{Programming.map(post => {
-						return (
-							<div key={post} className={styles.post}>
-								<Link href={"/knowledge/programming/" + post} passHref>
-									<a>{post}</a>
-								</Link>
-							</div>
-						);
+					<div className={styles.knowledge_items}>
+						{Programming.map(post => {
+							return (
+								<div key={post} className={styles.post}>
+						<Link href={"/knowledge/programming/" + post} passHref>
+							<a>{post}</a>
+						</Link>
+					</div>
+					);
 					})}
-					<h3>Electronics</h3>
+				</div>
+			</div>
+			<div className={styles.knowledge}>
+				<h3>Electronics</h3>
+				<div className={styles.knowledge_items}>
 					{Electronics.map(post => {
 						return (
 							<div key={post} className={styles.post}>
-								<Link href={"/knowledge/electronics/" + post} passHref>
-									<a>{post}</a>
-								</Link>
-							</div>
-						);
-					})}
-					<h3>Modeling</h3>
+					<Link href={"/knowledge/electronics/" + post} passHref>
+						<a>{post}</a>
+					</Link>
+				</div>
+				);
+				})}
+			</div>
+			<div className={styles.knowledge}>
+				<h3>Modeling</h3>
+				<div className={styles.knowledge_items}>
 					{Modeling.map(post => {
 						return (
 							<div key={post} className={styles.post}>
-								<Link href={"/knowledge/modeling/" + post} passHref>
-									<a>{post}</a>
-								</Link>
-							</div>
-						);
-					})}
+					<Link href={"/knowledge/modeling/" + post} passHref>
+						<a>{post}</a>
+					</Link>
 				</div>
-				<hr className={styles.sidebar_divider}></hr>
-				<div className={styles.links}>
-					<h2>Links</h2>
-					
-					<h3>UX/UI</h3>
-					<a href="https://material.io/">Material Design</a>
-					<a href="https://lawsofux.com/">Laws of UX</a>
-					
-					<h3>Electronics</h3>
-					<a href="https://www.pjrc.com/teensy/pinout.html">Teensy Pinouts</a>
-					<a href="https://www.circuitlab.com/editor/#?id=7pq5wm&from=homepage">Circuit LAB</a>			
-
-				</div>
+				);
+				})}
 			</div>
+		</div>
+		</div>
+		</div>
 		</div>
 	);
 }

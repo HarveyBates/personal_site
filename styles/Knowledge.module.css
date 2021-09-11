@@ -1,5 +1,8 @@
 .page{
-	margin: 1rem;
+	width: 75%;
+	margin: 0px auto;
+	left: 0;
+	right: 0;
 	padding: 1rem;
 }
 
