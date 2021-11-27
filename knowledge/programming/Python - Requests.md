@@ -1,6 +1,0 @@
----
-title: Python requests
----
-
-## Description
-

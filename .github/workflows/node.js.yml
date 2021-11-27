@@ -9,11 +9,11 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
-  STRAVA_REFRESH: ${{ secrets.STRAVA_REFRESH }}
-  STRAVA_ID: ${{ secrets.STRAVA_ID }}
-  STRAVA_SECRET: ${{ secrets.STRAVA_SECRET }}
+# env:
+#   WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
+#   STRAVA_REFRESH: ${{ secrets.STRAVA_REFRESH }}
+#   STRAVA_ID: ${{ secrets.STRAVA_ID }}
+#   STRAVA_SECRET: ${{ secrets.STRAVA_SECRET }}
 
 jobs:
   build:
