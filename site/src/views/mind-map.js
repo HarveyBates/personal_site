@@ -4,7 +4,7 @@ import Markdown from 'react-markdown';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {tomorrow} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-export default class MindMap extends React.Component {
+export default class MarkdownRouter extends React.Component {
 	constructor() {
 		super();
 		this.state = {
@@ -15,7 +15,11 @@ export default class MindMap extends React.Component {
 
 	async componentDidMount(){
 		try{
-			const url = `/mind-map/${this.props.folder}/${this.props.name}.md`;
+			var url = window.location.pathname;
+			if (this.props.name !== undefined){
+				url = `/${this.props.type}/${this.props.folder}/${this.props.name}.md`;
+
+			}
 			var res = await fetch(url);
 			var file = await res.text();
 			this.setState({
@@ -40,7 +44,10 @@ export default class MindMap extends React.Component {
 	async componentDidUpdate(prevProps, prevState){
 		if(prevProps.name !== this.state.name || prevProps.folder !== this.state.folder){
 			try{
-				const url = `/mind-map/${this.props.folder}/${this.props.name}.md`;
+				var url = window.location.pathname;
+				if (this.props.name !== undefined){
+					url = `/${this.props.type}/${this.props.folder}/${this.props.name}.md`;
+				}
 				var res = await fetch(url);
 				var file = await res.text();
 				this.setState({

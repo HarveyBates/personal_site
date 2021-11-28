@@ -5,3 +5,13 @@
 	margin-top: 40px;
 }
 
+.content div {
+	border-radius: 6px;
+}
+
+img {
+	width: 75%;
+	margin: auto;
+	display: block;
+}
+
