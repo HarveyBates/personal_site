@@ -47,7 +47,6 @@ Now navigate to your terminal preferences and change your font to a powerline sp
 # -- general -------------------------------------------------------------------
 
 set -g default-terminal "screen-256color" # colors!
-# To install power line see below
 source "/usr/local/lib/python3.9/site-packages/powerline/bindings/tmux/powerline.conf"
 setw -g xterm-keys on
 set -s escape-time 10                     # faster command sequences
@@ -71,6 +70,7 @@ bind e new-window -n "~/.tmux.conf.local" "EDITOR=\${EDITOR//mvim/vim} && EDITOR
 # reload configuration
 bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
 
+
 # -- display -------------------------------------------------------------------
 
 set -g base-index 1           # start windows numbering at 1
@@ -92,6 +92,7 @@ bind -n C-l send-keys C-l \; run 'sleep 0.1' \; clear-history
 # activity
 set -g monitor-activity on
 set -g visual-activity off
+
 
 # -- navigation ----------------------------------------------------------------
 
@@ -120,13 +121,16 @@ bind Tab last-window        # move to last active window
 # toggle mouse
 bind m run "cut -c3- ~/.tmux.conf | sh -s _toggle_mouse"
 
+
 # -- urlview -------------------------------------------------------------------
 
 bind U run "cut -c3- ~/.tmux.conf | sh -s _urlview #{pane_id}"
 
+
 # -- facebook pathpicker -------------------------------------------------------
 
 bind F run "cut -c3- ~/.tmux.conf | sh -s _fpp #{pane_id}"
+
 
 # -- list choice (tmux < 2.4) --------------------------------------------------
 
@@ -139,6 +143,7 @@ run -b 'tmux bind -t vi-choice H tree-collapse-all 2> /dev/null || true'
 run -b 'tmux bind -t vi-choice L tree-expand-all 2> /dev/null || true'
 run -b 'tmux bind -t vi-choice Escape cancel 2> /dev/null || true'
 
+
 # -- edit mode (tmux < 2.4) ----------------------------------------------------
 
 # vi-edit is gone in tmux >= 2.4
@@ -146,6 +151,7 @@ run -b 'tmux bind -ct vi-edit H start-of-line 2> /dev/null || true'
 run -b 'tmux bind -ct vi-edit L end-of-line 2> /dev/null || true'
 run -b 'tmux bind -ct vi-edit q cancel 2> /dev/null || true'
 run -b 'tmux bind -ct vi-edit Escape cancel 2> /dev/null || true'
+
 
 # -- copy mode -----------------------------------------------------------------
 
@@ -167,7 +173,6 @@ run -b 'tmux bind -T copy-mode-vi L send -X end-of-line 2> /dev/null || true'
 # copy to macOS clipboard
 if -b 'command -v pbcopy > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | pbcopy"'
 if -b 'command -v reattach-to-user-namespace > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | reattach-to-user-namespace pbcopy"'
-
 # copy to X11 clipboard
 if -b 'command -v xsel > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xsel -i -b"'
 if -b '! command -v xsel > /dev/null 2>&1 && command -v xclip > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xclip -i -selection clipboard >/dev/null 2>&1"'
@@ -175,19 +180,22 @@ if -b '! command -v xsel > /dev/null 2>&1 && command -v xclip > /dev/null 2>&1' 
 if -b 'command -v clip.exe > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | clip.exe"'
 if -b '[ -c /dev/clipboard ]' 'bind y run -b "tmux save-buffer - > /dev/clipboard"'
 
+
 # -- buffers -------------------------------------------------------------------
 
 bind b list-buffers  # list paste buffers
 bind p paste-buffer  # paste from the top paste buffer
 bind P choose-buffer # choose which buffer to paste from
 
+
 # -- user defined overrides ----------------------------------------------------
 
 if '[ -f ~/.tmux.conf.local ]' 'source ~/.tmux.conf.local'
 
+
 # -- 8< ------------------------------------------------------------------------
 
-run 'cut -c3- ~/.tmux.conf | sh -s _apply_configuration'
+#run 'cut -c3- ~/.tmux.conf | sh -s _apply_configuration'
 run -b '[ -z "#{window_active}" ] && [ -z "#{version}" ] && tmux set display-time 3000 \; display "This configuration will soon require tmux >= 2.4" \; set -u display-time || true'
 ```
 

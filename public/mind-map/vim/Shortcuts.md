@@ -126,3 +126,84 @@ Ctrl-] # Jump to tag definition
 g] # See all tags for a selected definition
 ```	
 
+## Config
+```bash
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/octol/vim-cpp-enhanced-highlight'
+Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/mg979/vim-visual-multi'
+Plug 'https://github.com/itchyny/lightline.vim'
+Plug 'https://github.com/MaxMEllon/vim-jsx-pretty'
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+Plug 'lervag/vimtex'
+Plug 'mattn/emmet-vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'StanAngeloff/php.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'https://github.com/cohama/lexima.vim'
+Plug 'zah/nim.vim'
+
+call plug#end()
+
+map <C-o> :NERDTreeToggle<CR>
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+set encoding=UTF-8
+set cursorline
+set nocompatible
+set tabstop=4
+set showmatch 
+set backspace=indent,eol,start
+set shiftwidth=4
+set expandtab
+set autoindent
+set noexpandtab
+set ignorecase
+set smartcase
+set ai
+set number
+set hlsearch
+set ruler
+set relativenumber
+
+set linebreak
+set wrap " 
+set t_md=
+set tw=0
+
+
+highlight Comment ctermfg=lightgrey
+highlight LineNr ctermfg=lightgrey
+highlight SpellBad ctermbg=black
+hi MatchParen cterm=bold ctermbg=none ctermfg=yellow
+set laststatus=2
+
+autocmd BufRead,BufNewFile *.txt setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.tex setlocal spell
+
+let g:vimtex_view_general_viewer = 'evince'
+
+let g:user_emmet_leader_key=','
+
+command! MakeTags !ctags -R .
+set tags=./tags,tags;$HOME
+set autochdir
+
+filetype plugin on
+set shell=bash\ -i
+
+if (has("autocmd") && !has("gui_running"))
+	augroup colorset
+		autocmd!
+		let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+		autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+	augroup END
+endif
+
+syntax on
+colorscheme onedark
+```
+
