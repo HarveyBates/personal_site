@@ -75,6 +75,7 @@ export class Navbar extends React.Component {
 								{this.state.arr[3].isActive ? <Link to="/mind-map/c++/cmake">CMake</Link> : null}
 								{this.state.arr[3].isActive ? <Link to="/mind-map/c++/cpm-make">CPM Make</Link> : null}
 								{this.state.arr[3].isActive ? <Link to="/mind-map/c++/json">JSON</Link> : null}
+								{this.state.arr[3].isActive ? <Link to="/mind-map/c++/lldb">lldb</Link> : null}
 							</div>
 
 							{this.state.arr[0].isActive ? <button onClick={() => this.handleState(4)}>Docker</button> : null}
@@ -139,7 +140,9 @@ export class Navbar extends React.Component {
 					<Route path="/mind-map/bash/web" element={<MarkdownRouter type="mind-map" folder="bash" name="Web"/>}/>
 					<Route path="/mind-map/c++/cmake" element={<MarkdownRouter type="mind-map" folder="c++" name="CMake"/>}/>
 					<Route path="/mind-map/c++/cpm-make" element={<MarkdownRouter type="mind-map" folder="c++" name="CPMmake"/>}/>
-					<Route path="/mind-map/c++/json" element={<MarkdownRouter type="mind-map" folder="c++" name="Json"/>}/>
+					<Route path="/mind-map/c++/lldb" element={<MarkdownRouter type="mind-map" folder="c++" name="LLDB-Cheatsheet"/>}/>
+					<Route path="/mind-map/c++/json" element={<MarkdownRouter type="mind-map" folder="c++" name="JSON"/>}/>
+
 					<Route path="/mind-map/docker/commands" element={<MarkdownRouter type="mind-map" folder="docker" name="Commands"/>}/>
 					<Route path="/mind-map/git/commands" element={<MarkdownRouter type="mind-map" folder="git" name="Commands"/>}/>
 					<Route path="/mind-map/pandoc/commands" element={<MarkdownRouter type="mind-map" folder="pandoc" name="Commands"/>}/>
